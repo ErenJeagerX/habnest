@@ -14,7 +14,9 @@ function formValidator(){
         passLengthError: false,
         invalidPNum: false,
         usernameLengthError: false,
+        invalidUsername: [],
         usernameTaken: false,
+        numberTaken: false,
     };
     const noErrors = {
         emptyInput: [],
@@ -23,7 +25,9 @@ function formValidator(){
         passLengthError: false,
         invalidPNum: false,
         usernameLengthError: false,
+        invalidUsername: [],
         usernameTaken: false,
+        numberTaken: false,
     };
 
     // event listener
@@ -63,7 +67,32 @@ function formValidator(){
             .then(res => res.json())
             .then(data => {
                 errors = {...data};
-                if(!checkEquality(errors, noErrors)){
+                if(checkEquality(errors, noErrors)){
+                    fetch('../includes/add-landlords.php', {
+                        method: 'POST',
+                        headers: {
+                            "Content-Type": 'application/x-www-form-urlencoded'
+                        },
+                        body: new URLSearchParams({
+                            first_name: capitalize(fName.value),
+                            last_name: capitalize(lName.value),
+                            phone_number: pNum.value,
+                            username: username.value,
+                            pwd: pwd.value,
+                        })
+                    })
+                    .then(res => res.json())
+                    .then(status => {
+                        if(status.success) {
+                            displayStatus('success', 'Landlord added sucessfully!');
+                            clearInputs();
+                        } 
+                        else {
+                            displayStatus('error', 'Failed to add landlord, try again!');
+                        }
+                    }) 
+                }
+                else {
                     displayErrors();
                 }
             })
@@ -73,6 +102,33 @@ function formValidator(){
     });
 
     // functions
+    //clear inputs 
+    function clearInputs(){
+        form.querySelectorAll('input').forEach(input => {
+            input.value = '';
+        })
+    }
+    // display status
+    function displayStatus(status, msg){
+        const statusEl = document.querySelector('.status');
+        statusEl.classList.add(status);
+        if(status == 'success') {
+            statusEl.innerHTML = `
+            <i class="fas fa-check"></i>
+            <p>${msg}</p>
+            `
+        } else {
+            statusEl.innerHTML = `
+            <i class="fas fa-exclamation-circle"></i>
+            <p>${msg}</p>
+            `
+        }
+        setTimeout(() => {
+            statusEl.querySelector('p').textContent = '';
+            statusEl.classList.remove(status);
+        }, 2500);
+    }
+    //check errors
     function checkErrors(){
         form.querySelectorAll('input').forEach(input => {
             if(!input.value) {
@@ -99,6 +155,18 @@ function formValidator(){
         if((!isPureNum(pNum.value) || pNum.value.length !== 10) && pNum.value) {
             errors.invalidPNum = true;
         }
+
+        if(!allowedUsername(username.value) && username.value){
+            errors.invalidUsername.push('notAllowed');
+        }
+
+        if(!isNaN(username.value[0])) {
+            errors.invalidUsername.push('startError');
+        }
+
+        if(username.value.includes(' ')) {
+            errors.invalidUsername.push('spaces');
+        }
     }
     // set back to default
     function setBackToDefault() {
@@ -109,6 +177,8 @@ function formValidator(){
         errors.invalidPNum = false;
         errors.usernameTaken = false;
         errors.usernameLengthError = false;
+        errors.invalidUsername = [];
+        errors.numberTaken = false;
     };
     // displayErrors
     function displayErrors(){
@@ -202,6 +272,53 @@ function formValidator(){
             error.showMsg();
             username.addEventListener('input', function(){
                 error.hideMsg('invalidInput');
+                username.classList.remove('errorMode');
+            })
+        }
+        // number Taken
+        if(errors.numberTaken){
+            const error = new ErrorMsg('A user with this number already exists', 'invalidInput', pNum);
+            error.showMsg();
+            pNum.addEventListener('input', function(){
+                error.hideMsg('invalidInput');
+                pNum.classList.remove('errorMode');
+            })
+        }
+        // invalid username
+        if(errors.invalidUsername.includes('notAllowed')) {
+            const error = new ErrorMsg('Username can only contain letters, numbers, underscores or periods', 'invalidInput', username)
+            error.showMsg();
+            username.addEventListener('input', function(){
+                if(allowedUsername(username.value) || !username.value){
+                    error.hideMsg('invalidInput');
+                    username.classList.remove('errorMode');
+                } else {
+                    error.showMsg();
+                }
+            })
+        }
+        if(errors.invalidUsername.includes('startError')) {
+            const error = new ErrorMsg("Username can't start with a number", 'invalidInput', username)
+            error.showMsg();
+            username.addEventListener('input', function(){
+                if(isNaN(username.value[0]) || !username.value){
+                    error.hideMsg('invalidInput');
+                    username.classList.remove('errorMode');
+                } else {
+                    error.showMsg();
+                }
+            })
+        }
+        if(errors.invalidUsername.includes('spaces')) {
+            const error = new ErrorMsg("Username can't contain spaces", 'invalidInput', username)
+            error.showMsg();
+            username.addEventListener('input', function(){
+                if(!username.value.includes(' ') || !username.value){
+                    error.hideMsg('invalidInput');
+                    username.classList.remove('errorMode');
+                } else {
+                    error.showMsg();
+                }
             })
         }
     };
@@ -232,6 +349,10 @@ function formValidator(){
     function checkEquality(obj1, obj2) {
         return JSON.stringify(obj1) === JSON.stringify(obj2);
     }
+    // capitalize
+    function capitalize(str){
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
     // regex functions
     function isPureString(str) {
         return /^[A-Za-z]+$/.test(str);
@@ -239,6 +360,10 @@ function formValidator(){
 
     function isPureNum(str) {
         return /^[0-9]+$/.test(str);
+    }
+
+    function allowedUsername(username){
+        return /^[a-zA-Z0-9_.]+$/.test(username);
     }
 }
 

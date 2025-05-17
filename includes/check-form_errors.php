@@ -18,7 +18,9 @@ function check_errors($data){
         "passLengthError" => false,
         "invalidPNum" => false,
         "usernameLengthError" => false,
-        "usernameTaken" => false
+        "invalidUsername" => [],
+        "usernameTaken" => false,
+        "numberTaken" => false
     ];
 
     foreach($data as $datum) {
@@ -44,6 +46,20 @@ function check_errors($data){
         $errors['usernameLengthError'] = true;
     }
 
+    if(!allowedUsername($data['username']['value']) && !empty($data['username']['value'])) {
+        array_push($errors['invalidUsername'], 'notAllowed');
+    }
+
+    if(strpos($data['username']['value'], ' ') !== false) {
+        array_push($errors['invalidUsername'], 'spaces');
+    }
+
+    if(!empty($data['username']['value'])) {
+        if(is_numeric($data['username']['value'][0])){
+            array_push($errors['invalidUsername'], 'startError');
+        }
+    }
+
     if(strlen($data['pwd']['value']) < 8 && !empty($data['pwd']['value'])){
         $errors['passLengthError'] = true;
     }
@@ -64,14 +80,26 @@ function check_errors($data){
         $errors['usernameTaken'] = true;
     }
 
+    $stmt->close();
+    // number check
+    $stmt = $conn->prepare("SELECT * FROM users WHERE phone_number = ?");
+    $stmt->bind_param('s', $data['phone_number']['value']);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    if($result->num_rows > 0) {
+        $errors['numberTaken'] = true;
+    }
+
+    $stmt->close();
+    $conn->close();
+
     return $errors;
 }
 
 
 
-function isPureString($input) {
-    return preg_match("/^[A-Za-z]+$/", $input);
-}
-function isPureNum($input) {
-    return preg_match("/^[0-9]+$/", $input);
+function allowedUsername($input) {
+    return preg_match("/^[a-zA-Z0-9_.]+$/", $input);
 }

@@ -16,6 +16,7 @@
 }
 body {
     font-family: Poppins;
+    overflow-x: hidden;
 }
 html {
     scroll-behavior: smooth;
@@ -779,7 +780,31 @@ input.errorMode ~ .error-icon {
 }
 .modal-landlords .errors {
     margin: .1em 0;
+    width: 100%;
     p {
         color: red;
     }
+}
+
+/* status msg */
+.status {
+    position: fixed;
+    top: 2rem;
+    right: 1rem;
+    padding: .3em .8em;
+    font-size: 1rem;
+    color: #fff;
+    z-index: 10000000;
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    gap: .5em;
+}
+.status.success {
+    background-color: green;
+    visibility: visible;
+}
+.status.error {
+    background-color: red;
+    visibility: visible;
 }

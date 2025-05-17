@@ -6,7 +6,8 @@
     <title>Habnest | Admin Dashboard</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="../assets/JS/dashboard-admin.js" defer type="module"></script>
+    <link rel="stylesheet" href="../../fontawesome/css/all.css">
+    <script src="../assets/JS/dashboard-admin.js?v=2" defer type="module"></script>
 </head>
 <body>
     <div class="wrapper-dashboard">
@@ -274,7 +275,7 @@
             </div>
         </div>
         <!-- add landlords modal-->
-        <div class="modal modal-landlords active">
+        <div class="modal modal-landlords">
             <h2>Add landlord</h2>
             <i class="fas fa-close close-modal" data-modal="modal-landlords"></i>
             <form id="add-landlords">
@@ -339,6 +340,9 @@
         <!-- bg layer when modal is active -->
         <div class="layer"></div>
         <!-- modals end -->
+        <!-- status -->
+        <div class="status">
+        </div>
     </div>
 </body>
 </html>
