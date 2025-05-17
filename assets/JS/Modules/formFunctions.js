@@ -1,4 +1,4 @@
-function formValidator(){
+function formFunctions(){
     //select elements
     const form = document.getElementById('add-landlords');
     const username = document.getElementById('username');
@@ -367,4 +367,4 @@ function formValidator(){
     }
 }
 
-export default formValidator;
+export default formFunctions;
