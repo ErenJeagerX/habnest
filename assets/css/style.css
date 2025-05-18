@@ -529,7 +529,17 @@ input.errorMode ~ .error-icon {
             color: #fff;
             background-color: rgb(29, 95, 182);
         }
+        .action:nth-of-type(2) {
+            transition: .3s;
+            color: #fff;
+            background-color: green;
+        }
         .action:first-of-type .view-icon {
+            color: #fff;
+            background-color: transparent;
+            padding: 0;
+        }
+        .action:first-of-type .edit-icon {
             color: #fff;
             background-color: transparent;
             padding: 0;

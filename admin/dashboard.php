@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Editport" content="width=device-width, initial-scale=1.0">
     <title>Habnest | Admin Dashboard</title>
     <link rel="shortcut icon" href="../assets/imgs/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/style.css<?php echo "?v=" . time()?>">
@@ -98,7 +98,7 @@
             <!-- properties section start -->
             <section id="properties">
                 <div class="section_body">
-                    <h2 class="section_title">View Properties</h2>
+                    <h2 class="section_title">Edit Properties</h2>
                         <div class="search_table properties_search dashboard_card">
                             <div class="search-bar">
                                 <input type="search" name="search_ppties" id="searchPpties" placeholder="Search properties...">
@@ -151,9 +151,13 @@
                                     <p class="property_landlord">Abebe kebede</p>
                                     <p class="property_address">Bole street 123</p>
                                     <div class="actions">
+                                        <div class="action view-ppty">
+                                            <i class="fas fa-eye view-icon"></i>
+                                            <div class="action_title">View</div>
+                                        </div>
                                         <div class="action edit-ppty">
                                             <i class="fas fa-pencil edit-icon"></i>
-                                            <div class="action_title">View</div>
+                                            <div class="action_title">Edit</div>
                                         </div>
                                         <div class="action delete-ppty open-modal" data-modal="modal-delete-ppty">
                                             <i class="fas fa-trash delete-icon"></i>
@@ -169,9 +173,13 @@
                                     <p class="property_landlord">Abebe kebede</p>
                                     <p class="property_address">Bole street 123</p>
                                     <div class="actions">
+                                        <div class="action view-ppty">
+                                            <i class="fas fa-eye view-icon"></i>
+                                            <div class="action_title">View</div>
+                                        </div>
                                         <div class="action edit-ppty">
                                             <i class="fas fa-pencil edit-icon"></i>
-                                            <div class="action_title">View</div>
+                                            <div class="action_title">Edit</div>
                                         </div>
                                         <div class="action delete-ppty open-modal" data-modal="modal-delete-ppty">
                                             <i class="fas fa-trash delete-icon"></i>
@@ -187,9 +195,13 @@
                                     <p class="property_landlord">Abebe kebede</p>
                                     <p class="property_address">Bole street 123</p>
                                     <div class="actions">
+                                        <div class="action view-ppty">
+                                            <i class="fas fa-eye view-icon"></i>
+                                            <div class="action_title">View</div>
+                                        </div>
                                         <div class="action edit-ppty">
                                             <i class="fas fa-pencil edit-icon"></i>
-                                            <div class="action_title">View</div>
+                                            <div class="action_title">Edit</div>
                                         </div>
                                         <div class="action delete-ppty open-modal" data-modal="modal-delete-ppty">
                                             <i class="fas fa-trash delete-icon"></i>
@@ -205,9 +217,13 @@
                                     <p class="property_landlord">Abebe kebede</p>
                                     <p class="property_address">Bole street 123</p>
                                     <div class="actions">
+                                        <div class="action view-ppty">
+                                            <i class="fas fa-eye view-icon"></i>
+                                            <div class="action_title">View</div>
+                                        </div>
                                         <div class="action edit-ppty">
                                             <i class="fas fa-pencil edit-icon"></i>
-                                            <div class="action_title">View</div>
+                                            <div class="action_title">Edit</div>
                                         </div>
                                         <div class="action delete-ppty open-modal" data-modal="modal-delete-ppty">
                                             <i class="fas fa-trash delete-icon"></i>
@@ -223,9 +239,13 @@
                                     <p class="property_landlord">Abebe kebede</p>
                                     <p class="property_address">Bole street 123</p>
                                     <div class="actions">
+                                        <div class="action view-ppty">
+                                            <i class="fas fa-eye view-icon"></i>
+                                            <div class="action_title">View</div>
+                                        </div>
                                         <div class="action edit-ppty">
                                             <i class="fas fa-pencil edit-icon"></i>
-                                            <div class="action_title">View</div>
+                                            <div class="action_title">Edit</div>
                                         </div>
                                         <div class="action delete-ppty open-modal" data-modal="modal-delete-ppty">
                                             <i class="fas fa-trash delete-icon"></i>
