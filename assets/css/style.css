@@ -326,13 +326,14 @@ input.errorMode ~ .error-icon {
 /* recent listings */
 .dashboard_recent-listings {
     margin: 1.5em 0;
-    padding: 1em 2em;
     max-height: 400px;
     display: flex;
     flex-direction: column;
 }
 .dashboard_recent-listings h3 {
-    margin-bottom: 1em;
+    font-size: 1.3rem;
+    margin-bottom: .5em;
+    padding: .6em 0 0 1.3em;
 }
 .dashboard_recent-listings .thead {
     border-bottom: 1px solid var(--light-gray);
@@ -342,16 +343,17 @@ input.errorMode ~ .error-icon {
 }
 .dashboard_recent-listings .row {
     display: grid;
+    padding: 1.3em 1em;
     grid-template-columns: 1fr 1fr;
     padding: .5em;
-    text-align: center;
+    place-items: center;
     @media(min-width: 768px){
         grid-template-columns: repeat(4, 1fr);
         text-align: start;
     }
 }
 .dashboard_recent-listings .row p {
-    font-size: clamp(.9rem, 2vw, 1.05rem);
+    font-size: 1rem;
 }
 .dashboard_recent-listings .row p:nth-of-type(3),
 .dashboard_recent-listings .row p:last-of-type {
@@ -384,7 +386,7 @@ input.errorMode ~ .error-icon {
     margin-bottom: .7em;
     font-size: clamp(1.4rem, 3vw, 1.58rem);
 }
-.properties_search {
+.search_table {
     padding: 2em 1em;
     display: flex;
     flex-direction: column;
@@ -396,24 +398,25 @@ input.errorMode ~ .error-icon {
         justify-content: flex-start;
     }
 }
-.properties_search .search-bar {
+.search_table .search-bar {
     position: relative;
 }
-.properties_search .search-icon {
+.search_table .search-icon {
     pointer-events: none;
     position: absolute;
     color: var(--gray);
-    left: .4em;
+    left: .5em;
     top: 50%;
     transform: translateY(-50%);
     font-size: 1.2rem;
 }
-.properties_search input {
+.search_table input {
     width: 100%;
     height: 100%;
     padding: .4em 2em;
     border: 2px solid var(--light-gray);
     border-radius: 5px;
+    font-size: 1.15rem;
     &:focus {
         border-color: var(--gray);
     }
@@ -421,11 +424,11 @@ input.errorMode ~ .error-icon {
         padding: .4em 3em .4em 2em;
     }
 }
-.filter-ppties {
+.filter_table {
     display: flex;
     gap: .5em;
 }
-.filter-ppties .select {
+.filter_table .select {
     border: 2px solid var(--light-gray);
     border-radius: 5px;
     position: relative;
@@ -433,7 +436,7 @@ input.errorMode ~ .error-icon {
     margin-left: .5em;
     cursor: pointer;
 }
-.filter-ppties .selected {
+.filter_table .selected {
     padding: .3em .6em;
     position: relative;
     display: flex;
@@ -442,7 +445,7 @@ input.errorMode ~ .error-icon {
     text-align: center;
     gap: .4em;
 }
-.filter-ppties .options {
+.filter_table .options {
     position: absolute;
     border: 2px solid var(--light-gray);
     border-top: none;
@@ -454,7 +457,7 @@ input.errorMode ~ .error-icon {
 .options.open {
     display: block;
 }
-.filter-ppties .option {
+.filter_table .option {
     padding: 0 .6em;
     white-space: nowrap;
     background-color: white;
@@ -526,16 +529,20 @@ input.errorMode ~ .error-icon {
             color: #fff;
             background-color: rgb(29, 95, 182);
         }
-        .action:first-of-type .view-ppty-icon {
+        .action:first-of-type .view-icon {
             color: #fff;
+            background-color: transparent;
+            padding: 0;
         }
         .action:last-of-type {
             transition: .3s;
             color: #fff;
             background-color: red;
         }
-        .delete-ppty-icon {
+        .delete-icon {
             color: #fff;
+            background-color: transparent;
+            padding: 0;
         }
     }
     @media(min-width: 768px) {
@@ -578,26 +585,40 @@ input.errorMode ~ .error-icon {
     border-radius: 5px;
     }
 }
-.properties_table .actions {
+.actions {
     color: var(--gray);
     display: flex;
-    gap: 1em;
+    gap: .7em;
     .action {
         font-size: 1.1rem;
         transition: .3s;
         cursor: pointer;
     }
-}
-.properties_table .view-ppty-icon {
-    color: rgb(36, 120, 230);
-    &:hover {
-        color: rgb(29, 95, 182);
+    i {
+        padding: .4rem .6rem;
+        border-radius: 5px;
     }
 }
-.properties_table .delete-ppty-icon {
-    color: rgba(255, 0, 0, 0.75);
+.view-icon {
+    background-color: rgb(36, 120, 230);
+    color: white;
     &:hover {
-        color: red;
+        background-color: rgb(29, 95, 182);
+    }
+}
+.delete-icon {
+    background-color: rgba(255, 0, 0, 0.75);
+    color: white;
+    &:hover {
+        background-color: red;
+    }
+}
+.edit-icon {
+    background-color: rgba(0, 128, 0, 0.863);
+    color: white;
+    padding: .3em;
+    &:hover {
+        background-color: green;
     }
 }
 .properties_table .page-controls {
@@ -638,30 +659,35 @@ input.errorMode ~ .error-icon {
 .modal.active {
     display: block;
 }
-.modal-delete p {
+.modal-delete-ppty p,
+.modal-delete-landlord p {
     font-size: 1.2rem;
     font-weight: 500;
     margin-bottom: .8em;
 }
-.modal-delete .modal-btns {
+.modal-delete-ppty .modal-btns,
+.modal-delete-landlord .modal-btns {
     display: flex;
     gap: .7em;
     font-size: 1.1rem;
 }
-.modal-delete .modal-btn {
+.modal-delete-ppty .modal-btn,
+.modal-delete-landlord .modal-btn {
     padding: .1em .8em;
     border-radius: 5px;
     transition: .3s;
     cursor: pointer;
 }
-.modal-delete .delete-modal {
+.modal-delete-ppty .delete-modal,
+.modal-delete-landlord .delete-modal {
     background-color: rgba(255, 0, 0, 0.85);
     color: white;
     &:hover {
         background-color: red;
     }
 }
-.modal-delete .close-modal {
+.modal-delete-ppty .close-modal,
+.modal-delete-landlord .close-modal {
     background-color: #575757;
     color: white;
     &:hover {
@@ -706,6 +732,46 @@ input.errorMode ~ .error-icon {
     &:hover {
         background-color: var(--primary);
     }
+}
+/* search landlords */
+.landlords_search {
+    margin: 1em 0;
+}
+.landlords_table {
+    padding: 1em 0;
+    overflow-x: auto;
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+    scrollbar-color: var(--light-gray) transparent;
+}
+.landlord_name_and_pfp {
+    position: relative;
+    width: 100%;
+    position: relative;
+    padding-left: calc(50px + 2em);
+}
+.landlords_table img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    position: absolute;
+    left: 1em;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.landlords_table .row {
+    display: grid;
+    grid-template-columns: 1.5fr repeat(4, 1fr);
+    padding: 1em;
+    place-items: center;
+    min-width: 850px;
+}
+.landlords_table .thead .row {
+    color: var(--dark-gray);
+    font-size: 1.1rem;
+}
+.landlords_table .row:not(.thead .row) {
+    border-top: 1px solid var(--light-gray);
 }
 /* add landlords modal */
 .modal-landlords h2 {
@@ -754,12 +820,14 @@ input.errorMode ~ .error-icon {
     padding: .5em 1.2em .5em 2.1em;
     width: 100%;
     height: 100%;
-    border-bottom: 2px solid var(--light-gray);
     color: var(--dark-gray);
     font-size: 1.15rem;
     &:focus {
         border-bottom: 2px solid var(--primary);
     }
+}
+.modal-landlords input:not([type = "file"]) {
+    border-bottom: 2px solid var(--light-gray);
 }
 .modal-landlords input:focus + i:not(#showPwd) {
     color: var(--primary);
@@ -790,8 +858,8 @@ input.errorMode ~ .error-icon {
 .status {
     position: fixed;
     top: 2rem;
-    right: 1rem;
-    padding: .3em .8em;
+    right: 1.1rem;
+    padding: .4em .8em;
     font-size: 1rem;
     color: #fff;
     z-index: 10000000;

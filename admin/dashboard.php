@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Habnest | Admin Dashboard</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="shortcut icon" href="../assets/imgs/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/style.css<?php echo "?v=" . time()?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="../assets/JS/dashboard-admin.js" defer type="module"></script>
+    <script src="../assets/JS/dashboard-admin.js?v=<?php echo time() ?>" defer type="module"></script>
 </head>
 <body>
     <div class="wrapper-dashboard">
@@ -98,12 +99,12 @@
             <section id="properties">
                 <div class="section_body">
                     <h2 class="section_title">View Properties</h2>
-                        <div class="properties_search dashboard_card">
+                        <div class="search_table properties_search dashboard_card">
                             <div class="search-bar">
                                 <input type="search" name="search_ppties" id="searchPpties" placeholder="Search properties...">
                                 <i class="fas fa-search search-icon"></i>
                             </div>
-                            <div class="filter-ppties">
+                            <div class="filter_table filter-ppties">
                                 <div class="select">
                                     <div class="selected">
                                         <div class="selected_text">Location</div>
@@ -131,7 +132,7 @@
                             </div>
                         </div>
                         <!-- ppties table start -->
-                         <div class="properties_table">
+                         <div class="table_filterable properties_table">
                             <div class="thead">
                                 <div class="row">
                                     <p>Image</p>
@@ -150,12 +151,12 @@
                                     <p class="property_landlord">Abebe kebede</p>
                                     <p class="property_address">Bole street 123</p>
                                     <div class="actions">
-                                        <div class="action view-ppty">
-                                            <i class="fas fa-eye view-ppty-icon"></i>
+                                        <div class="action edit-ppty">
+                                            <i class="fas fa-pencil edit-icon"></i>
                                             <div class="action_title">View</div>
                                         </div>
-                                        <div class="action delete-ppty open-modal" data-modal="modal-delete">
-                                            <i class="fas fa-trash delete-ppty-icon"></i>
+                                        <div class="action delete-ppty open-modal" data-modal="modal-delete-ppty">
+                                            <i class="fas fa-trash delete-icon"></i>
                                             <div class="action_title">Delete</div>
                                         </div>
                                     </div>
@@ -168,12 +169,12 @@
                                     <p class="property_landlord">Abebe kebede</p>
                                     <p class="property_address">Bole street 123</p>
                                     <div class="actions">
-                                        <div class="action view-ppty">
-                                            <i class="fas fa-eye view-ppty-icon"></i>
+                                        <div class="action edit-ppty">
+                                            <i class="fas fa-pencil edit-icon"></i>
                                             <div class="action_title">View</div>
                                         </div>
-                                        <div class="action delete-ppty open-modal" data-modal="modal-delete">
-                                            <i class="fas fa-trash delete-ppty-icon"></i>
+                                        <div class="action delete-ppty open-modal" data-modal="modal-delete-ppty">
+                                            <i class="fas fa-trash delete-icon"></i>
                                             <div class="action_title">Delete</div>
                                         </div>
                                     </div>
@@ -186,12 +187,12 @@
                                     <p class="property_landlord">Abebe kebede</p>
                                     <p class="property_address">Bole street 123</p>
                                     <div class="actions">
-                                        <div class="action view-ppty">
-                                            <i class="fas fa-eye view-ppty-icon"></i>
+                                        <div class="action edit-ppty">
+                                            <i class="fas fa-pencil edit-icon"></i>
                                             <div class="action_title">View</div>
                                         </div>
-                                        <div class="action delete-ppty open-modal" data-modal="modal-delete">
-                                            <i class="fas fa-trash delete-ppty-icon"></i>
+                                        <div class="action delete-ppty open-modal" data-modal="modal-delete-ppty">
+                                            <i class="fas fa-trash delete-icon"></i>
                                             <div class="action_title">Delete</div>
                                         </div>
                                     </div>
@@ -204,12 +205,12 @@
                                     <p class="property_landlord">Abebe kebede</p>
                                     <p class="property_address">Bole street 123</p>
                                     <div class="actions">
-                                        <div class="action view-ppty">
-                                            <i class="fas fa-eye view-ppty-icon"></i>
+                                        <div class="action edit-ppty">
+                                            <i class="fas fa-pencil edit-icon"></i>
                                             <div class="action_title">View</div>
                                         </div>
-                                        <div class="action delete-ppty open-modal" data-modal="modal-delete">
-                                            <i class="fas fa-trash delete-ppty-icon"></i>
+                                        <div class="action delete-ppty open-modal" data-modal="modal-delete-ppty">
+                                            <i class="fas fa-trash delete-icon"></i>
                                             <div class="action_title">Delete</div>
                                         </div>
                                     </div>
@@ -222,12 +223,12 @@
                                     <p class="property_landlord">Abebe kebede</p>
                                     <p class="property_address">Bole street 123</p>
                                     <div class="actions">
-                                        <div class="action view-ppty">
-                                            <i class="fas fa-eye view-ppty-icon"></i>
+                                        <div class="action edit-ppty">
+                                            <i class="fas fa-pencil edit-icon"></i>
                                             <div class="action_title">View</div>
                                         </div>
-                                        <div class="action delete-ppty open-modal" data-modal="modal-delete">
-                                            <i class="fas fa-trash delete-ppty-icon"></i>
+                                        <div class="action delete-ppty open-modal" data-modal="modal-delete-ppty">
+                                            <i class="fas fa-trash delete-icon"></i>
                                             <div class="action_title">Delete</div>
                                         </div>
                                     </div>
@@ -259,6 +260,52 @@
                             <div>Add Landlords</div>
                         </div>
                     </div>
+                    <!-- search landlords start -->
+                    <div class="search_table landlords_search dashboard_card">
+                        <div class="search-bar">
+                            <input type="search" name="search_landlords" id="searchLandlords" placeholder="Search landlords...">
+                            <i class="fas fa-search search-icon"></i>
+                        </div>
+                        <div class="filter_table filter-ppties">
+                            <div class="select">
+                                <div class="selected">
+                                    <div class="selected_text">Properties Count</div>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="options">
+                                    <div class="option">Ascending</div>
+                                    <div class="option">Descending</div>
+                                </div>
+                            </div>
+                            <div class="select">
+                                <div class="selected">
+                                    <div class="selected_text">Last Active</div>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="options">
+                                    <div class="option">Most Active</div>
+                                    <div class="option">Least Active</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- search landlords end -->
+                    <!-- landlords table start -->
+                     <div class="landlords_table dashboard_card">
+                        <div class="thead">
+                            <div class="row">
+                                <p>Name</p>
+                                <p>Phone Number</p>
+                                <p>Properties</p>
+                                <p>Last Active</p>
+                                <p>Actions</p>
+                            </div>
+                        </div>
+                        <div class="tbody">
+                            
+                        </div>
+                     </div>
+                    <!-- landlords table end -->
                 </div>
             </section>
             <!-- landlords section end -->
@@ -266,11 +313,19 @@
         <!-- dashboard content end-->
         <!--modals start -->
         <!-- delete property modal -->
-        <div class="modal modal-delete">
+        <div class="modal modal-delete-ppty">
             <p>Are you sure you want to delete this property?</p>
             <div class="modal-btns">
                 <div class="modal-btn delete-modal">Yes, delete</div>
-                <div class="modal-btn close-modal" data-modal="modal-delete">Cancel</div>
+                <div class="modal-btn close-modal" data-modal="modal-delete-ppty">Cancel</div>
+            </div>
+        </div>
+        <!-- delete landlord modal -->
+        <div class="modal modal-delete-landlord">
+            <p>Are you sure you want to delete this landlord?</p>
+            <div class="modal-btns">
+                <div class="modal-btn delete-modal">Yes, delete</div>
+                <div class="modal-btn close-modal" data-modal="modal-delete-landlord">Cancel</div>
             </div>
         </div>
         <!-- add landlords modal-->
@@ -314,7 +369,7 @@
                 <div class="userInput">
                     <div class="input-field">
                         <input data-name="Password" type="password" name="pwd" id="pwd" placeholder="Password">
-                        <i class="fas fa-lock"></i> <i class="fas fa-eye-slash show-pwd hidden" id="showPwd"></i>
+                        <i class="fas fa-lock"></i> <i class="fas fa-pencil-slash show-pwd hidden" id="showPwd"></i>
                     </div>
                     <div class="errors">
                         <p data-error="emptyInput"></p>

@@ -35,6 +35,7 @@ function formFunctions(){
         e.preventDefault();
         setBackToDefault();
         checkErrors();
+        // if no errors send the data to do a server side validation
         if(checkEquality(errors, noErrors)) {
             fetch('../includes/check-form_errors.php', {
                 method: 'POST',
@@ -66,9 +67,11 @@ function formFunctions(){
             })
             .then(res => res.json())
             .then(data => {
+                // copy the data fetched to the errors object
                 errors = {...data};
+                // after doing server side validation, if no errors, send the data to a php file to insert it to DB 
                 if(checkEquality(errors, noErrors)){
-                    fetch('../includes/add-landlords.php', {
+                    fetch('add-landlords.php', {
                         method: 'POST',
                         headers: {
                             "Content-Type": 'application/x-www-form-urlencoded'
@@ -83,6 +86,7 @@ function formFunctions(){
                     })
                     .then(res => res.json())
                     .then(status => {
+                        // check status and display it
                         if(status.success) {
                             displayStatus('success', 'Landlord added sucessfully!');
                             clearInputs();
@@ -93,10 +97,12 @@ function formFunctions(){
                     }) 
                 }
                 else {
+                    // if there are errors, display em
                     displayErrors();
                 }
             })
         } else {
+            // if there are errors, display em
             displayErrors();
         }
     });
@@ -366,5 +372,6 @@ function formFunctions(){
         return /^[a-zA-Z0-9_.]+$/.test(username);
     }
 }
+
 
 export default formFunctions;

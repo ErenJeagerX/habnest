@@ -1,0 +1,9 @@
+<?php
+
+require_once '../includes/db.php';
+
+$query = "SELECT * FROM users where role = 'landlord'";
+
+$users = $conn->query($query)->fetch_all(MYSQLI_ASSOC);
+
+echo json_encode($users);
