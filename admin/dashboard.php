@@ -7,7 +7,6 @@
     <link rel="shortcut icon" href="../assets/imgs/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/style.css<?php echo "?v=" . time()?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../../fontawesome/css/all.css">
     <script src="../assets/JS/dashboard-admin.js?v=<?php echo time() ?>" defer type="module"></script>
 </head>
 <body>
