@@ -19,8 +19,6 @@ const map = {
             const {lat, lng} = e.latlng;
             latBox.textContent = lat;
             lngBox.textContent = lng;
-            console.log(typeof lat);
-            
 
             if(marker){
                 marker.remove();
