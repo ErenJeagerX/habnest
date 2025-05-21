@@ -1,7 +1,7 @@
 <?php
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
-    require_once 'db.php';
+    require_once '../includes/db.php';
 
     $first_name = ucfirst(trim($_POST['first_name']));
     $last_name = ucfirst(trim($_POST['last_name']));

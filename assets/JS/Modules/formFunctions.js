@@ -1,3 +1,5 @@
+import displayStatus from "./displayStatus.js";
+import fetchLandlords from "./fetchLandlords.JS";
 function formFunctions(){
     //select elements
     const form = document.getElementById('add-landlords');
@@ -90,8 +92,9 @@ function formFunctions(){
                         if(status.success) {
                             displayStatus('success', 'Landlord added sucessfully!');
                             clearInputs();
+                            fetchLandlords();
                         } 
-                        else {
+                        else if(status.error) {
                             displayStatus('error', 'Failed to add landlord, try again!');
                         }
                     }) 
@@ -113,26 +116,6 @@ function formFunctions(){
         form.querySelectorAll('input').forEach(input => {
             input.value = '';
         })
-    }
-    // display status
-    function displayStatus(status, msg){
-        const statusEl = document.querySelector('.status');
-        statusEl.classList.add(status);
-        if(status == 'success') {
-            statusEl.innerHTML = `
-            <i class="fas fa-check"></i>
-            <p>${msg}</p>
-            `
-        } else {
-            statusEl.innerHTML = `
-            <i class="fas fa-exclamation-circle"></i>
-            <p>${msg}</p>
-            `
-        }
-        setTimeout(() => {
-            statusEl.querySelector('p').textContent = '';
-            statusEl.classList.remove(status);
-        }, 2500);
     }
     //check errors
     function checkErrors(){

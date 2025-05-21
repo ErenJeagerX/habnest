@@ -503,18 +503,28 @@ input.errorMode ~ .error-icon {
             order: -5;
             line-height: 1.1;
         }
-        .property_address {
+        .property_address,
+        .property_status {
             order: -4;
             font-size: 1.15rem;
             color: var(--gray);
             margin-bottom: .5em;
+            background-color: transparent;
+            width: fit-content;
         }
-        .property_landlord {
+         [data-status='rented'] {
+            color: red;
+        }
+        .property_status[data-status='available'] {
+            color: green;
+        }
+        .property_landlord,
+        .property_location {
             display: none;
         }
         .actions {
             border-top: 1px solid var(--light-gray);
-            padding: .7em 1.5rem;
+            padding: .7em .9em;
             display: flex;
             justify-content: flex-end;
         }
@@ -523,7 +533,7 @@ input.errorMode ~ .error-icon {
             align-items: center;
             gap: .5em;
             font-size: 1rem;
-            padding: .1em .6em;
+            padding: .2em .8em;
             border-radius: 5px;
             color: var(--dark-gray);
             cursor: pointer;
@@ -543,7 +553,7 @@ input.errorMode ~ .error-icon {
             background-color: transparent;
             padding: 0;
         }
-        .action:first-of-type .edit-icon {
+        .action:nth-of-type(2) .edit-icon {
             color: #fff;
             background-color: transparent;
             padding: 0;
@@ -598,6 +608,20 @@ input.errorMode ~ .error-icon {
     height: 50px;
     border-radius: 5px;
     }
+}
+.property_status {
+    color: #fff;
+    width:55%;
+    min-width: fit-content;
+    text-align: center;
+    border-radius: 5px;
+    padding: 0 .2em;
+}
+.property_status[data-status = 'rented'] {
+    background-color: red;
+}
+.property_status[data-status = 'available'] {
+    background-color: green;
 }
 .actions {
     color: var(--gray);
@@ -784,9 +808,10 @@ input.errorMode ~ .error-icon {
 .landlords_table .thead .row {
     color: var(--dark-gray);
     font-size: 1.1rem;
+    border-bottom: 1px solid var(--light-gray);
 }
-.landlords_table .row:not(.thead .row) {
-    border-top: 1px solid var(--light-gray);
+.landlords_table .row:not(.row:last-of-type) {
+    border-bottom: 1px solid var(--light-gray);
 }
 /* add landlords modal */
 .modal-landlords h2 {
@@ -882,12 +907,20 @@ input.errorMode ~ .error-icon {
     display: flex;
     align-items: center;
     gap: .5em;
+    border-radius: 5px;
 }
 .status.success {
     background-color: green;
     visibility: visible;
+    box-shadow: 0 0 10px rgb(0, 175, 0);
 }
 .status.error {
     background-color: red;
+    box-shadow: 0 0 10px rgb(255, 20, 20);
     visibility: visible;
+}
+
+/* add properties section */
+#add-properties .section_title{
+    margin-bottom: .7em;
 }

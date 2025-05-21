@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="Editport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Habnest | Admin Dashboard</title>
     <link rel="shortcut icon" href="../assets/imgs/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/style.css<?php echo "?v=" . time()?>">
@@ -118,15 +118,12 @@
                                 </div>
                                 <div class="select">
                                     <div class="selected">
-                                        <div class="selected_text">Size</div>
+                                        <div class="selected_text">Status</div>
                                         <i class="fas fa-chevron-down"></i>
                                     </div>
                                     <div class="options">
-                                        <div class="option">Very Small</div>
-                                        <div class="option">Small</div>
-                                        <div class="option">Medium</div>
-                                        <div class="option">Large</div>
-                                        <div class="option">Very Large</div>
+                                        <div class="option">Rented</div>
+                                        <div class="option">Available</div>
                                     </div>
                                 </div>
                             </div>
@@ -138,7 +135,7 @@
                                     <p>Image</p>
                                     <p>Name</p>
                                     <p>Landlord</p>
-                                    <p>Address</p>
+                                    <p>Status</p>
                                     <p>Actions</p>
                                 </div>
                             </div>
@@ -149,7 +146,7 @@
                                     </div>
                                     <p class="property_name">Modern Apartment</p>
                                     <p class="property_landlord">Abebe kebede</p>
-                                    <p class="property_address">Bole street 123</p>
+                                    <p class="property_status" data-status="available">Available</p>
                                     <div class="actions">
                                         <div class="action view-ppty">
                                             <i class="fas fa-eye view-icon"></i>
@@ -167,11 +164,11 @@
                                 </div>
                                 <div class="row">
                                     <div class="ppty-img">
-                                        <img src="../assets/imgs/Property 2.jpg" alt="property 2" class="property_image">
+                                        <img src="../assets/imgs/Property 1.jpg" alt="property 1" class="property_image">
                                     </div>
                                     <p class="property_name">Modern Apartment</p>
                                     <p class="property_landlord">Abebe kebede</p>
-                                    <p class="property_address">Bole street 123</p>
+                                    <p class="property_status" data-status="available">Available</p>
                                     <div class="actions">
                                         <div class="action view-ppty">
                                             <i class="fas fa-eye view-icon"></i>
@@ -189,11 +186,11 @@
                                 </div>
                                 <div class="row">
                                     <div class="ppty-img">
-                                        <img src="../assets/imgs/Property 3.jpg" alt="property 3" class="property_image">
+                                        <img src="../assets/imgs/Property 1.jpg" alt="property 1" class="property_image">
                                     </div>
                                     <p class="property_name">Modern Apartment</p>
                                     <p class="property_landlord">Abebe kebede</p>
-                                    <p class="property_address">Bole street 123</p>
+                                    <p class="property_status" data-status="available">Available</p>
                                     <div class="actions">
                                         <div class="action view-ppty">
                                             <i class="fas fa-eye view-icon"></i>
@@ -211,11 +208,11 @@
                                 </div>
                                 <div class="row">
                                     <div class="ppty-img">
-                                        <img src="../assets/imgs/Property 1.jpg" alt="property 4" class="property_image">
+                                        <img src="../assets/imgs/Property 1.jpg" alt="property 1" class="property_image">
                                     </div>
                                     <p class="property_name">Modern Apartment</p>
                                     <p class="property_landlord">Abebe kebede</p>
-                                    <p class="property_address">Bole street 123</p>
+                                    <p class="property_status" data-status="available">Available</p>
                                     <div class="actions">
                                         <div class="action view-ppty">
                                             <i class="fas fa-eye view-icon"></i>
@@ -233,11 +230,143 @@
                                 </div>
                                 <div class="row">
                                     <div class="ppty-img">
-                                        <img src="../assets/imgs/Property 2.jpg" alt="property 5" class="property_image">
+                                        <img src="../assets/imgs/Property 1.jpg" alt="property 1" class="property_image">
                                     </div>
                                     <p class="property_name">Modern Apartment</p>
                                     <p class="property_landlord">Abebe kebede</p>
-                                    <p class="property_address">Bole street 123</p>
+                                    <p class="property_status" data-status="available">Available</p>
+                                    <div class="actions">
+                                        <div class="action view-ppty">
+                                            <i class="fas fa-eye view-icon"></i>
+                                            <div class="action_title">View</div>
+                                        </div>
+                                        <div class="action edit-ppty">
+                                            <i class="fas fa-pencil edit-icon"></i>
+                                            <div class="action_title">Edit</div>
+                                        </div>
+                                        <div class="action delete-ppty open-modal" data-modal="modal-delete-ppty">
+                                            <i class="fas fa-trash delete-icon"></i>
+                                            <div class="action_title">Delete</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="ppty-img">
+                                        <img src="../assets/imgs/Property 1.jpg" alt="property 1" class="property_image">
+                                    </div>
+                                    <p class="property_name">Modern Apartment</p>
+                                    <p class="property_landlord">Abebe kebede</p>
+                                    <p class="property_status" data-status="available">Available</p>
+                                    <div class="actions">
+                                        <div class="action view-ppty">
+                                            <i class="fas fa-eye view-icon"></i>
+                                            <div class="action_title">View</div>
+                                        </div>
+                                        <div class="action edit-ppty">
+                                            <i class="fas fa-pencil edit-icon"></i>
+                                            <div class="action_title">Edit</div>
+                                        </div>
+                                        <div class="action delete-ppty open-modal" data-modal="modal-delete-ppty">
+                                            <i class="fas fa-trash delete-icon"></i>
+                                            <div class="action_title">Delete</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="ppty-img">
+                                        <img src="../assets/imgs/Property 1.jpg" alt="property 1" class="property_image">
+                                    </div>
+                                    <p class="property_name">Modern Apartment</p>
+                                    <p class="property_landlord">Abebe kebede</p>
+                                    <p class="property_status" data-status="available">Available</p>
+                                    <div class="actions">
+                                        <div class="action view-ppty">
+                                            <i class="fas fa-eye view-icon"></i>
+                                            <div class="action_title">View</div>
+                                        </div>
+                                        <div class="action edit-ppty">
+                                            <i class="fas fa-pencil edit-icon"></i>
+                                            <div class="action_title">Edit</div>
+                                        </div>
+                                        <div class="action delete-ppty open-modal" data-modal="modal-delete-ppty">
+                                            <i class="fas fa-trash delete-icon"></i>
+                                            <div class="action_title">Delete</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="ppty-img">
+                                        <img src="../assets/imgs/Property 1.jpg" alt="property 1" class="property_image">
+                                    </div>
+                                    <p class="property_name">Modern Apartment</p>
+                                    <p class="property_landlord">Abebe kebede</p>
+                                    <p class="property_status" data-status="rented">Rented</p>
+                                    <div class="actions">
+                                        <div class="action view-ppty">
+                                            <i class="fas fa-eye view-icon"></i>
+                                            <div class="action_title">View</div>
+                                        </div>
+                                        <div class="action edit-ppty">
+                                            <i class="fas fa-pencil edit-icon"></i>
+                                            <div class="action_title">Edit</div>
+                                        </div>
+                                        <div class="action delete-ppty open-modal" data-modal="modal-delete-ppty">
+                                            <i class="fas fa-trash delete-icon"></i>
+                                            <div class="action_title">Delete</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="ppty-img">
+                                        <img src="../assets/imgs/Property 1.jpg" alt="property 1" class="property_image">
+                                    </div>
+                                    <p class="property_name">Modern Apartment</p>
+                                    <p class="property_landlord">Abebe kebede</p>
+                                    <p class="property_status" data-status="available">Available</p>
+                                    <div class="actions">
+                                        <div class="action view-ppty">
+                                            <i class="fas fa-eye view-icon"></i>
+                                            <div class="action_title">View</div>
+                                        </div>
+                                        <div class="action edit-ppty">
+                                            <i class="fas fa-pencil edit-icon"></i>
+                                            <div class="action_title">Edit</div>
+                                        </div>
+                                        <div class="action delete-ppty open-modal" data-modal="modal-delete-ppty">
+                                            <i class="fas fa-trash delete-icon"></i>
+                                            <div class="action_title">Delete</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="ppty-img">
+                                        <img src="../assets/imgs/Property 1.jpg" alt="property 1" class="property_image">
+                                    </div>
+                                    <p class="property_name">Modern Apartment</p>
+                                    <p class="property_landlord">Abebe kebede</p>
+                                    <p class="property_status" data-status="available">Available</p>
+                                    <div class="actions">
+                                        <div class="action view-ppty">
+                                            <i class="fas fa-eye view-icon"></i>
+                                            <div class="action_title">View</div>
+                                        </div>
+                                        <div class="action edit-ppty">
+                                            <i class="fas fa-pencil edit-icon"></i>
+                                            <div class="action_title">Edit</div>
+                                        </div>
+                                        <div class="action delete-ppty open-modal" data-modal="modal-delete-ppty">
+                                            <i class="fas fa-trash delete-icon"></i>
+                                            <div class="action_title">Delete</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="ppty-img">
+                                        <img src="../assets/imgs/Property 1.jpg" alt="property 1" class="property_image">
+                                    </div>
+                                    <p class="property_name">Modern Apartment</p>
+                                    <p class="property_landlord">Abebe kebede</p>
+                                    <p class="property_status" data-status="available">Available</p>
                                     <div class="actions">
                                         <div class="action view-ppty">
                                             <i class="fas fa-eye view-icon"></i>

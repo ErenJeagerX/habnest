@@ -1,16 +1,17 @@
 import modalListeners from './modals.js';
+import deleteLandlord from './deleteLandlord.js';
 function fetchLandlords() {
     const landlordsTable = document.querySelector('.landlords_table');
     const tbody = landlordsTable.querySelector('.tbody');
+    const modals = document.querySelectorAll('.modal');
     fetch('fetch-landlords.php')
     .then(res => res.json())
     .then(users => {
+        tbody.innerHTML = '';
         displayUsers(tbody, users);
         initSearchInputListener(tbody, users);
-        const modals = document.querySelectorAll('.modal');
-        const openBtns = document.querySelectorAll('.open-modal');
-        const closeBtns = document.querySelectorAll('.close-modal');
-        modalListeners(modals, openBtns, closeBtns);
+        initModalListeners();
+        initDeleteLandlordListeners();
     });
 }
 
@@ -27,10 +28,10 @@ function displayUsers(parent, usersArray) {
                     <p class="properties_count">2</p>
                     <p class="last_active">2025-09-08</p>
                     <div class="actions">
-                        <div class="action view-landlord">
+                        <div class="action view-landlord" data-id="${user.id}">
                             <i class="fas fa-eye view-icon"></i>
                         </div>
-                        <div class="action delete-landlord open-modal" data-modal="modal-delete-landlord">
+                        <div class="action delete-landlord open-modal" data-modal="modal-delete-landlord" data-id="${user.id}" data-name="${user.first_name}">
                             <i class="fas fa-trash delete-icon"></i>
                         </div>
                     </div>
@@ -48,6 +49,49 @@ function initSearchInputListener(parent, usersArray){
         parent.innerHTML = '';
         displayUsers(parent, filteredUsers);
     });
+}
+
+// modal listeners
+
+function initModalListeners(){
+    const modals = document.querySelectorAll('.modal');
+    const openBtns = document.querySelectorAll('.open-modal');
+    const closeBtns = document.querySelectorAll('.close-modal');
+    modalListeners(modals, openBtns, closeBtns);
+}
+
+// delete landlord
+function initDeleteLandlordListeners() {
+    const deleteLandlordBtns = document.querySelectorAll('.delete-landlord');
+        deleteLandlordBtns.forEach(btn => {
+            btn.addEventListener("click", function(){
+                const currentId = btn.dataset.id;
+                const currentName = btn.dataset.name;
+                const modalLandlords = document.querySelector('.modal-delete-landlord');
+                const deleteModal = modalLandlords.querySelector('.delete-modal');
+                deleteModal.addEventListener('click', async function(){
+                    if(currentId && currentName) {
+                        const result = await deleteLandlord(currentId, currentName);
+                        if(result) {
+                            modals.forEach(modal => {
+                                if(modal.classList.contains('active')) {
+                                    modal.classList.remove('active');
+                                }
+                            })
+                            fetchLandlords();
+                        }
+                        else {
+                            modals.forEach(modal => {
+                                if(modal.classList.contains('active')) {
+                                    modal.classList.remove('active');
+                                }
+                            })
+                            initModalListeners();
+                        }
+                    }
+                });
+            });
+        });
 }
 
 export default fetchLandlords;

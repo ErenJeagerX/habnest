@@ -8,7 +8,7 @@ function modalListeners(modals, openBtns, closeBtns){
                 })
             })
         });
-    
+
         closeBtns.forEach(closeBtn => {
             closeBtn.addEventListener('click', function(){
                 modals.forEach(modal => {
