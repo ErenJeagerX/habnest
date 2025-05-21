@@ -432,15 +432,17 @@ input.errorMode ~ .error-icon {
     display: flex;
     gap: .5em;
 }
-.filter_table .select {
+.select {
     border: 2px solid var(--light-gray);
     border-radius: 5px;
     position: relative;
     font-size: 1rem;
-    margin-left: .5em;
     cursor: pointer;
 }
-.filter_table .selected {
+.filter_table .select {
+    margin-left: .5em;
+}
+.selected {
     padding: .3em .6em;
     position: relative;
     display: flex;
@@ -449,7 +451,7 @@ input.errorMode ~ .error-icon {
     text-align: center;
     gap: .4em;
 }
-.filter_table .options {
+.options {
     position: absolute;
     border: 2px solid var(--light-gray);
     border-top: none;
@@ -461,7 +463,7 @@ input.errorMode ~ .error-icon {
 .options.open {
     display: block;
 }
-.filter_table .option {
+.option {
     padding: 0 .6em;
     white-space: nowrap;
     background-color: white;
@@ -921,6 +923,142 @@ input.errorMode ~ .error-icon {
 }
 
 /* add properties section */
+#add-properties {
+    margin-bottom: 2em;
+}
 #add-properties .section_title{
     margin-bottom: .7em;
+}
+#addNewPptyForm {
+    padding: .8em;
+    display: flex;
+    flex-direction: column;
+    @media(min-width: 992px) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+.ppty-data {
+    margin-bottom: .6em;
+    @media(min-width: 992px) {
+        width: 48%;
+        margin-bottom: 0;
+    }
+}
+#addNewPptyForm h3 {
+    margin-bottom: .6em;
+}
+#addNewPptyForm .userInput {
+    margin-bottom: .8em;
+    display: flex;
+    flex-direction: column;
+    gap: .3em;
+}
+#addNewPptyForm .input-field {
+    position: relative;
+}
+#addNewPptyForm label {
+    color: var(--dark-gray);
+}
+#addNewPptyForm .input-field input {
+    width: 100%;
+    height: 100%;
+    padding: .5em 0 .3em 2em;
+    font-size: 1.05rem;
+    border: 2px solid var(--light-gray);
+    border-radius: 5px;
+}
+#addNewPptyForm .input-field input:hover,
+#addNewPptyForm .input-field input:focus {
+    border-color: var(--gray);
+}
+#addNewPptyForm .input-field i {
+    position: absolute;
+    left: 1em;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--gray);
+}
+#addNewPptyForm .group-input {
+    display: flex;
+    align-items: center;
+    gap: .5em;
+}
+#addNewPptyForm .group-input .userInput:first-of-type {
+    flex: 1;
+}
+#addNewPptyForm .location-map {
+    height: 300px;
+    position: relative;
+}
+#addNewPptyForm .location-map::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    width: 110%;
+    height: 20px;
+    background-color: #fff;
+    z-index: 100000;
+}
+#addNewPptyForm .location-data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#addNewPptyForm .longitude,
+#addNewPptyForm .latitude {
+    width: 49%;
+}
+#addNewPptyForm .location-box {
+    background-color: var(--light-gray);
+    color: #000;
+    padding: .2em .5em;
+    font-size: 1.1rem;
+    margin-top: .3em;
+    overflow: hidden;
+}
+#addNewPptyForm .ppty-media {
+    display: flex;
+    flex-direction: column;
+}
+#addNewPptyForm .uploaded-media {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: .8em;
+}
+#addNewPptyForm .uploaded-media .imgs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .7em;
+    margin-top: .5em;
+}
+#addNewPptyForm .uploaded-media img {
+    max-width: 100%;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+#upload-media {
+    display: none;
+}
+#addNewPptyForm label[for="upload-media"] {
+    width: 100%;
+    height: 100px;
+    border: 2px dashed var(--medium-primary);
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+    background-color: rgba(255, 0, 0, 0.068);
+    &:hover {
+        background-color: rgba(255, 0, 0, 0.123);
+    }
+}
+#addNewPptyForm label[for="upload-media"] i {
+    color: var(--primary);
+    font-size: 2rem;
 }

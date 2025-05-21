@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../assets/css/style.css<?php echo "?v=" . time()?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="../assets/JS/dashboard-landlord.js?v=<?php echo time() ?>" defer type="module"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 <body>
     <div class="wrapper-dashboard">
@@ -239,9 +241,92 @@
             <!-- add properties section start -->
              <section id="add-properties">
                 <div class="section_body">
-                    <h2 class="section_title">Add Properties</h2>
-                    <form>
-                        
+                    <h2 class="section_title">Add New Property</h2>
+                    <form class="dashboard_card" id="addNewPptyForm">
+                        <div class="ppty-data">
+                            <div class="ppty-details">
+                                <h3>Property Details</h3>
+                                <div class="userInput">
+                                    <label for="property_title">Property title</label>
+                                    <div class="input-field">
+                                        <i class="fas fa-home"></i>
+                                        <input type="text" id="property_title" placeholder="e.g. Spacious Apartment near Downtown">
+                                    </div>
+                                </div>
+                                <div class="userInput">
+                                    <label for="property_description">Description</label>
+                                    <div class="input-field">
+                                        <i class="fas fa-home"></i>
+                                        <input type="text" id="property_description" placeholder="Describe your property">
+                                    </div>
+                                </div>
+                                <div class="group-input">
+                                    <div class="userInput">
+                                        <label for="property_price">Price per Month (Br) </label>
+                                        <div class="input-field">
+                                            <i class="fas fa-dollar"></i>
+                                            <input type="text" id="property_price" placeholder="e.g. 3000">
+                                        </div>
+                                    </div>
+                                    <div class="userInput">
+                                        <label for="property_bedrooms">Bedrooms</label>
+                                        <div class="select" id="property_bedrooms">
+                                            <div class="selected">
+                                                <div class="selected_text">Select</div>
+                                                <i class="fas fa-chevron-down"></i>
+                                            </div>
+                                            <div class="options">
+                                                <div class="option">1</div>
+                                                <div class="option">2</div>
+                                                <div class="option">3</div>
+                                                <div class="option">4</div>
+                                                <div class="option">5+</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ppty-location">
+                                <h3>Location</h3>
+                                <div class="location-map" id="location-map">
+    
+                                </div>
+                                <div class="location-data" id="location-data">
+                                    <div class="latitude">
+                                        <label>Latitude</label>
+                                        <div class="location-box latitude-box">10.33</div>
+                                    </div>
+                                    <div class="longitude">
+                                        <label>Longitude</label>
+                                        <div class="location-box longitude-box">37.72</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ppty-data ppty-media">
+                            <h3>Property Media</h3>
+                            <div class="upload-media">
+                                <label for="upload-media">
+                                    <i class="fas fa-cloud"></i>
+                                    <p>Click to select files</p>
+                                </label>
+                                <input type="file" id="upload-media">
+                            </div>
+                            <div class="uploaded-media">
+                                <label>Uploaded Media</label>
+                                <div class="imgs">
+                                    <div class="uploaded-image">
+                                        <img src="../assets/imgs/Property 1.jpg">
+                                    </div>
+                                    <div class="uploaded-image">
+                                        <img src="../assets/imgs/Property 2.jpg">
+                                    </div>
+                                    <div class="uploaded-image">
+                                        <img src="../assets/imgs/Property 3.jpg">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </form>
                 </div>
              </section>
