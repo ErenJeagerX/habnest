@@ -997,11 +997,12 @@ input.errorMode ~ .error-icon {
 #addNewPptyForm .location-map::after {
     content: '';
     position: absolute;
-    bottom: -5px;
+    bottom: -7px;
     width: 110%;
-    height: 20px;
+    height: 27px;
+    left: -8px;
     background-color: #fff;
-    z-index: 100000;
+    z-index: 10000;
 }
 #addNewPptyForm .location-data {
     display: flex;
@@ -1025,7 +1026,6 @@ input.errorMode ~ .error-icon {
     flex-direction: column;
 }
 #addNewPptyForm .uploaded-media {
-    align-self: center;
     display: flex;
     flex-direction: column;
     margin-top: .8em;
@@ -1041,15 +1041,15 @@ input.errorMode ~ .error-icon {
     position: relative;
     cursor: pointer;
     overflow: hidden;
-    width: 100px;
+    width: 130px;
 }
 #addNewPptyForm .layer {
     width: 100%;
-    height: 90px;
+    height: 110px;
     position: absolute;
     background-color: #ffffff1e;
     backdrop-filter: blur(10px);
-    top: 90px;
+    top: 110px;
     left: 0;
     opacity: .7;
     display: flex;
@@ -1068,7 +1068,7 @@ input.errorMode ~ .error-icon {
 }
 #addNewPptyForm .uploaded-media img {
     width: 100%;
-    height: 90px;
+    height: 110px;
     object-fit: cover;
     border-radius: 5px;
 }

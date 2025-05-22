@@ -251,7 +251,7 @@
                                         <label for="property_title">Property title</label>
                                         <div class="input-field">
                                             <i class="fas fa-home"></i>
-                                            <input type="text" id="property_title" placeholder="e.g. Spacious Apartment near Downtown">
+                                            <input type="text" id="property_title" placeholder="e.g. Spacious Apartment">
                                         </div>
                                     </div>
                                     <div class="userInput">
