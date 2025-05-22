@@ -1062,3 +1062,13 @@ input.errorMode ~ .error-icon {
     color: var(--primary);
     font-size: 2rem;
 }
+#addNewPptyForm button {
+    background-color: var(--primary);
+    padding: .3em 0;
+    font-size: 1.15rem;
+    color: #fff;
+    transition: .3s;
+    &:hover {
+        background-color: var(--medium-primary);
+    }
+}
