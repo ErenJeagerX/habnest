@@ -3,7 +3,6 @@ import deleteLandlord from './deleteLandlord.js';
 function fetchLandlords() {
     const landlordsTable = document.querySelector('.landlords_table');
     const tbody = landlordsTable.querySelector('.tbody');
-    const modals = document.querySelectorAll('.modal');
     fetch('fetch-landlords.php')
     .then(res => res.json())
     .then(users => {
@@ -65,6 +64,7 @@ function initDeleteLandlordListeners() {
     const deleteLandlordBtns = document.querySelectorAll('.delete-landlord');
         deleteLandlordBtns.forEach(btn => {
             btn.addEventListener("click", function(){
+                const modals = document.querySelectorAll('.modal');
                 const currentId = btn.dataset.id;
                 const currentName = btn.dataset.name;
                 const modalLandlords = document.querySelector('.modal-delete-landlord');

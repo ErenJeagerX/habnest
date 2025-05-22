@@ -17,8 +17,8 @@ const map = {
 
         map.on('click', function(e) {
             const {lat, lng} = e.latlng;
-            latBox.textContent = lat;
-            lngBox.textContent = lng;
+            latBox.textContent = lat.toFixed(3);
+            lngBox.textContent = lng.toFixed(3);
 
             if(marker){
                 marker.remove();

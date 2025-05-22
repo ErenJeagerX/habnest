@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 /* variables */
 :root {
     --primary: #DC5641;
@@ -805,7 +806,7 @@ input.errorMode ~ .error-icon {
     grid-template-columns: 1.5fr repeat(4, 1fr);
     padding: 1em;
     place-items: center;
-    min-width: 850px;
+    min-width: 670px;
 }
 .landlords_table .thead .row {
     color: var(--dark-gray);
@@ -931,6 +932,8 @@ input.errorMode ~ .error-icon {
 }
 #addNewPptyForm {
     padding: .8em;
+}
+#addNewPptyForm .flex-container {
     display: flex;
     flex-direction: column;
     @media(min-width: 992px) {
@@ -1029,16 +1032,48 @@ input.errorMode ~ .error-icon {
 }
 #addNewPptyForm .uploaded-media .imgs {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     gap: .7em;
     margin-top: .5em;
+    flex-wrap: wrap;
+}
+#addNewPptyForm .uploaded-image {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    width: 100px;
+}
+#addNewPptyForm .layer {
+    width: 100%;
+    height: 90px;
+    position: absolute;
+    background-color: #ffffff1e;
+    backdrop-filter: blur(10px);
+    top: 90px;
+    left: 0;
+    opacity: .7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s;
+}
+.layer.active {
+    top: 0;
+    left: 0;
+}
+#addNewPptyForm .layer .cover-btn {
+    background-color: #fff;
+    font-size: .9rem;
+    padding: .2em;
 }
 #addNewPptyForm .uploaded-media img {
-    max-width: 100%;
+    width: 100%;
     height: 90px;
     object-fit: cover;
     border-radius: 5px;
+}
+#addNewPptyForm .uploaded-image:hover .layer {
+    top: 0;
 }
 #upload-media {
     display: none;
@@ -1068,6 +1103,9 @@ input.errorMode ~ .error-icon {
     font-size: 1.15rem;
     color: #fff;
     transition: .3s;
+    margin-top: 1em;
+    width: 100%;
+    border-radius: 5px;
     &:hover {
         background-color: var(--medium-primary);
     }
