@@ -252,6 +252,22 @@ input.errorMode ~ .error-icon {
         display: block;
     }
 }
+/* logout btn */
+.logout-btn {
+    @media(min-width: 768px) {
+        background-color: red !important;
+        &hover {
+            background-color: darkred !important;
+        }
+    }
+}
+.logout-btn a,
+.logout-btn i {
+    color: red !important;
+    @media(min-width: 768px){
+        color: white !important;
+    }
+}
 .admin-info {
     display: none;
     @media(min-width: 992px){

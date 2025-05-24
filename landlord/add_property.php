@@ -68,7 +68,7 @@ if (!$error) {
         $targetPath = $uploadDir . $uniqueName;
 
         if (move_uploaded_file($tmpName, $targetPath)) {
-            $savedFiles[$originalName] = $relativePath;
+            $savedFiles[] = $relativePath; // <-- use [] to keep order!
         } else {
             $error = "Failed to upload image: $originalName";
             break;
@@ -83,27 +83,33 @@ if (!$error) {
 if (!$error) {
     require_once '../includes/db.php'; // adjust path as needed
 
-    $coverUnique = $savedFiles[$coverImageName] ?? reset($savedFiles);
+    $coverIndex = isset($_POST['cover_index']) ? intval($_POST['cover_index']) : 0;
+    $coverUnique = $savedFiles[$coverIndex] ?? '';
+    if ($coverUnique === '') {
+        echo json_encode([
+            'success' => false,
+            'error' => 'Cover image could not be determined.'
+        ]);
+        exit;
+    }
 
     // Cast to correct types for DB
     $price = floatval($price);
     $lat = floatval($lat);
     $lng = floatval($lng);
 
-    $stmt = $conn->prepare("INSERT INTO properties (title, description, price, bedrooms, latitude, longitude, property_image) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssdddds", $title, $description, $price, $bedrooms, $lat, $lng, $coverUnique);
+    $stmt = $conn->prepare("INSERT INTO properties (title, description, price, bedrooms, latitude, longitude, property_image, landlord_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssdddsis", $title, $description, $price, $bedrooms, $lat, $lng, $coverUnique, $landlordId);
     if (!$stmt->execute()) {
         $error = "Database error: could not insert property.";
     } else {
         $propertyId = $conn->insert_id;
         $imgStmt = $conn->prepare("INSERT INTO property_imgs (property_id, img_name) VALUES (?, ?)");
         foreach ($savedFiles as $orig => $relativePath) {
-            if ($relativePath !== $coverUnique) {
-                $imgStmt->bind_param("is", $propertyId, $relativePath);
-                if (!$imgStmt->execute()) {
-                    $error = "Database error: could not insert images.";
-                    break;
-                }
+            $imgStmt->bind_param("is", $propertyId, $relativePath);
+            if (!$imgStmt->execute()) {
+                $error = "Database error: could not insert images.";
+                break;
             }
         }
     }

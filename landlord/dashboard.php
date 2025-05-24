@@ -35,7 +35,7 @@ if (!isset($_SESSION['name'])){
                     <i class="fas fa-square-plus nav-icon"></i>
                     <div class="nav-name">Add Properties</div>
                 </a></li>
-                <li class="nav-link"><a href="../includes/logout.php">
+                <li class="nav-link logout-btn"><a href="../includes/logout.php">
                     <i class="fas fa-sign-out-alt nav-icon"></i>
                     <div class="nav-name">Logout</div>
                 </a></li>
@@ -313,11 +313,11 @@ if (!isset($_SESSION['name'])){
                                     <div class="location-data" id="location-data">
                                         <div class="latitude">
                                             <label>Latitude</label>
-                                            <div class="location-box latitude-box" data-lat="">10.33</div>
+                                            <div class="location-box latitude-box" data-lat="10.33451">10.33</div>
                                         </div>
                                         <div class="longitude">
                                             <label>Longitude</label>
-                                            <div class="location-box longitude-box" data-lng="">37.72</div>
+                                            <div class="location-box longitude-box" data-lng="37.72851">37.72</div>
                                         </div>
                                     </div>
                                 </div>
