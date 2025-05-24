@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="../assets/JS/dashboard-landlord.js?v=<?php echo time() ?>" defer type="module"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 <body>
     <div class="wrapper-dashboard">
@@ -48,7 +48,7 @@
                         <div class="dashboard_card stats_card property_total_stats">
                             <i class="fas fa-building stats-icon"></i>
                             <h2 class="stats_number">20</h2>
-                            <p class="stats_title">Total Properties</p>
+                            <p class="stats_title">Properties</p>
                         </div>
                         <div class="dashboard_card stats_card property_rented_stats">
                             <i class="fas fa-building stats-icon"></i>
@@ -251,23 +251,30 @@
                                         <label for="property_title">Property title</label>
                                         <div class="input-field">
                                             <i class="fas fa-home"></i>
-                                            <input type="text" id="property_title" placeholder="e.g. Spacious Apartment">
+                                            <input type="text" id="property_title" placeholder="e.g. Spacious Apartment" name="title">
                                         </div>
+                                        <div class="ppty-error hidden" data-input="property_title"></div>
                                     </div>
                                     <div class="userInput">
                                         <label for="property_description">Description</label>
-                                        <div class="input-field">
+                                        <div class="input-field descInputContainer">
                                             <i class="fas fa-home"></i>
-                                            <input type="text" id="property_description" placeholder="Describe your property">
+                                            <textarea id="property_description" placeholder="Describe your property..." name="description"></textarea>
+                                            <div class="charcount hidden">
+                                                <span class="count"></span>
+                                                <span class="maxcharlength">/ 150</span>
+                                            </div>
                                         </div>
+                                        <div class="ppty-error hidden" data-input="property_description"></div>
                                     </div>
                                     <div class="group-input">
                                         <div class="userInput">
                                             <label for="property_price">Price per Month (Br) </label>
                                             <div class="input-field">
                                                 <i class="fas fa-dollar"></i>
-                                                <input type="text" id="property_price" placeholder="e.g. 3000">
+                                                <input type="text" id="property_price" placeholder="e.g. 3000" name="price">
                                             </div>
+                                            <div class="ppty-error hidden" data-input="property_price"></div>
                                         </div>
                                         <div class="userInput">
                                             <label for="property_bedrooms">Bedrooms</label>
@@ -281,25 +288,25 @@
                                                     <div class="option">2</div>
                                                     <div class="option">3</div>
                                                     <div class="option">4</div>
-                                                    <div class="option">Any</div>
+                                                    <div class="option">5+</div>
                                                 </div>
                                             </div>
+                                            <div class="ppty-error hidden" data-input="bedrooms"></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="ppty-location">
                                     <h3>Location</h3>
                                     <div class="location-map" id="location-map">
-        
                                     </div>
                                     <div class="location-data" id="location-data">
                                         <div class="latitude">
                                             <label>Latitude</label>
-                                            <div class="location-box latitude-box">10.33</div>
+                                            <div class="location-box latitude-box" data-lat="">10.33</div>
                                         </div>
                                         <div class="longitude">
                                             <label>Longitude</label>
-                                            <div class="location-box longitude-box">37.72</div>
+                                            <div class="location-box longitude-box" data-lng="">37.72</div>
                                         </div>
                                     </div>
                                 </div>
@@ -307,14 +314,14 @@
                             <div class="ppty-data ppty-media">
                                 <h3>Property Media</h3>
                                 <div class="upload-media">
-                                    <label for="upload-media">
+                                    <label for="upload-media" id="label_upload">
                                         <i class="fas fa-cloud"></i>
                                         <p>Click to select files</p>
                                     </label>
-                                    <input type="file" id="upload-media" multiple>
+                                    <input type="file" id="upload-media" name="files[]" multiple>
                                 </div>
                                 <div class="uploaded-media">
-                                    <label>Uploaded Images</label>
+                                    <label>Uploaded images</label>
                                     <div class="imgs">
                                     </div>
                                 </div>

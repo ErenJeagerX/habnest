@@ -19,12 +19,14 @@ const map = {
             const {lat, lng} = e.latlng;
             latBox.textContent = lat.toFixed(3);
             lngBox.textContent = lng.toFixed(3);
+            latBox.dataset.lat = lat;
+            lngBox.dataset.lng = lng;
 
             if(marker){
                 marker.remove();
             }
             marker = L.marker([lat, lng]).addTo(map);
-        })
+        });
     },
     mapOutput: () => {
 
