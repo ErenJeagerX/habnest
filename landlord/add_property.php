@@ -1,5 +1,12 @@
 <?php
 header('Content-Type: application/json');
+session_start();
+
+$landlordId = $_SESSION['id'] ?? null;
+if (!$landlordId) { 
+    echo json_encode(['success' => false, 'error' => 'Unauthorized']);
+    exit;
+}
 
 // --- CONFIG ---
 $uploadDir = __DIR__ . '/../uploads/properties/';

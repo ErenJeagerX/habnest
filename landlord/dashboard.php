@@ -35,8 +35,12 @@ if (!isset($_SESSION['name'])){
                     <i class="fas fa-square-plus nav-icon"></i>
                     <div class="nav-name">Add Properties</div>
                 </a></li>
+                <li class="nav-link"><a href="../includes/logout.php">
+                    <i class="fas fa-sign-out-alt nav-icon"></i>
+                    <div class="nav-name">Logout</div>
+                </a></li>
             </ul>
-            <div class="admin-info">Landlord <span><?php $_SESSION['name'] ?></span></div>
+            <div class="admin-info">Landlord <span><?php echo $_SESSION['name'] ?></span></div>
         </div>
         <!-- dashboard sidebar end -->
         <!-- dashboard content start-->
