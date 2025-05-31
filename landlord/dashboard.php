@@ -1,6 +1,9 @@
 <?php
+session_start();
 
-
+if (!isset($_SESSION['name'])){
+    header('Location:../login.php');
+}
 
 ?>
 
@@ -10,6 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Habnest | Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link rel="shortcut icon" href="../assets/imgs/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/style.css<?php echo "?v=" . time()?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -25,6 +29,7 @@
                 <li class="nav-link active"><a href="#home">
                     <i class="fas fa-home nav-icon"></i>
                     <div class="nav-name">Dashboard</div>
+
                 </a></li>
                 <li class="nav-link"><a href="#properties">
                     <i class="fas fa-building nav-icon"></i>
@@ -35,7 +40,7 @@
                     <div class="nav-name">Add Properties</div>
                 </a></li>
             </ul>
-            <div class="admin-info">Landlord <span>Abebe</span></div>
+            <div class="admin-info">Welcome <span><?= $_SESSION['name'] ?></span></div>
         </div>
         <!-- dashboard sidebar end -->
         <!-- dashboard content start-->
@@ -43,8 +48,9 @@
             <!-- home section start -->
             <section id="home">
                 <!-- dashboard header start -->
-                <div class="dashboard_header">
+                <div class="dashboard_header d-flex float-end">
                     <h2>Dashboard</h2>
+                    <a href="../logout.php">Logout</a>
                 </div>
                 <!-- dashboard header end -->
                  <!-- section content start -->
