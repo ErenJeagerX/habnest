@@ -1,3 +1,51 @@
+<?php
+
+
+$host = 'localhost';
+$user = 'root';
+$pwd = '';
+$db_name = 'habnest';
+
+try {
+    $conn = new mysqli($host, $user, $pwd, $db_name);
+} catch(mysqli_sql_exception $e) {
+    die('Connection failed: ' . $e->getMessage());
+
+}
+
+if (isset($_POST['submit'])){
+    $username = trim($_POST['username']);
+    $pwd = trim($_POST['pwd']);
+
+    if (username($empty)){
+        $usr_error = "Please enter Username";
+    }elseif (pwd($empty)){
+        $pwd_error = "Please enter Password";
+    }
+    else{
+
+        $sql = "SELECT * FROM users WHERE $username = ? && $pwd = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt = bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0){
+            //username is correct
+            $row = $result->fetch_assoc();
+            $db_pwd = $row['pwd'];
+            if (password_verify($pwd, $db_pwd)){
+                //password is correct
+                //use session here
+                $_SESSION['name'] = ['first_name'];
+                header['location: ./landlord/dashboard.php'];
+                
+            }
+
+        }
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +71,10 @@
                 <i class="fas fa-eye-slash show-pwd hidden" id="showPwd"></i>
                 <i class="fas fa-warning error-icon"></i>
             </div>
-            <button type="submit">Login</button>
+
+            
+
+            <button type="submit" name="submit">Login</button>
         </form>
     </div>
 </body>
