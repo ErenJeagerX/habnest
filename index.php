@@ -6,7 +6,7 @@
     <link rel="shortcut icon" href="icon/image (7).jpg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="./CSS/style.css" />
-    <title>GET your home</title>
+    <title>Habnest</title>
   </head>
   <body>
     <section class="main">
