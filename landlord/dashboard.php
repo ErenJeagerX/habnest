@@ -4,9 +4,7 @@ session_start();
 if (!isset($_SESSION['name'])){
     header('Location:../login.php');
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +38,12 @@ if (!isset($_SESSION['name'])){
                     <div class="nav-name">Add Properties</div>
                 </a></li>
             </ul>
-            <div class="admin-info">Welcome <span><?= $_SESSION['name'] ?></span></div>
+        <div class="admin-info">
+            <div class=>Welcome <span><?= $_SESSION['name'] ?></span></div>
+            <div class>
+                <a href="../logout.php" class="text-decoration-none">Logout</a>
+            </div>
+        </div>
         </div>
         <!-- dashboard sidebar end -->
         <!-- dashboard content start-->
@@ -48,9 +51,9 @@ if (!isset($_SESSION['name'])){
             <!-- home section start -->
             <section id="home">
                 <!-- dashboard header start -->
-                <div class="dashboard_header d-flex float-end">
+                <div class="dashboard_header d-flex justify-content-center">
                     <h2>Dashboard</h2>
-                    <a href="../logout.php">Logout</a>
+                    
                 </div>
                 <!-- dashboard header end -->
                  <!-- section content start -->

@@ -1,0 +1,226 @@
+.sec-1 {
+  position: relative; 
+  background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'); /* !!! REPLACE THIS URL with your image !!! */
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  padding-top: 5rem; /* Increased padding for better visual with image */
+  padding-bottom: 5rem;
+  text-align: center; /* Center align content by default in hero */
+}
+
+.sec-1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.55); /* Dark overlay for text readability */
+  z-index: 0; /* Behind content */
+}
+
+/* Ensure content container (.pxy or .container directly under .sec-1) is above the overlay */
+.sec-1 > .pxy { /* Targeting the direct child .pxy */
+  position: relative;
+  z-index: 1; /* Above the ::before pseudo-element */
+}
+
+/* Styling for the main content box within the hero */
+.sec-1 .discover {
+  background-color: rgba(10, 10, 10, 0.65); /* Slightly more opaque & darker box for content */
+  border-radius: 10px;
+  display: inline-block; /* To make it only as wide as its content */
+  max-width: 80%; /* Max width for the content box */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sec-1 .discover .habnest-txt,
+.sec-1 .discover .display-4,
+.sec-1 .discover .lead,
+.sec-1 .discover div {
+  color: #f8f9fa !important; 
+}
+
+.sec-1 .discover .display-4 {
+  font-weight: 600; /* Make title a bit bolder */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3); /* Subtle text shadow for depth */
+}
+
+/* Navigation Styles */
+.nav-link-custom {
+  transition: color 0.3s ease;
+  padding: 0.5rem 0.75rem; /* Adjusted padding for navbar context */
+}
+.nav-link-custom:hover, .nav-link-custom.active {
+  color: #0d6efd;
+}
+.navbar-brand img {
+  margin-right: 8%;
+}
+/* Dark Mode Toggle Icon */
+.dark-mode-toggle {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+.dark-mode-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Button Styles */
+.contact-btn,
+.detail {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  border: none; 
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+.contact-btn {
+  background-color: #0d6efd; /* Bootstrap primary */
+  color: white;
+}
+.contact-btn:hover {
+  background-color: #0b5ed7;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.detail {
+  background-color: #0b5ed7; /* Bootstrap secondary */
+  color: white;
+}
+.detail:hover {
+  background-color: #007c1b;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Styles (Section 2) */
+.four-boxes { /* This class is applied to service cards in sec-2 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.four-boxes:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+/* Image Placeholder Card Styles (Section 3) */
+.four-imges, .three-img {
+  min-height: 200px;
+  /* background-color: #e9ecef; Placeholder color */
+  margin-bottom: 1rem;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6c757d;
+  font-style: italic;
+  border-radius: 8px;
+  /* Example: background-image: url('path/to/your/image.jpg'); */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added for hover effect */
+}
+.four-imges:hover, .three-img:hover {
+  transform: scale(1.03); /* Slight zoom effect */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Add shadow on hover */
+}
+
+.first-img{
+  background-image:url(../images/house1.jpg)
+}
+
+.second-img{
+  background-image:url(../images/house2.jpg)
+}
+
+.thread-img{
+  background-image: url(../images/house3.jpg);
+}
+.ftr {
+  padding: 20px 0;
+  text-align: center;
+}
+
+/* Adjust body padding if using sticky top navbar to prevent content overlap */
+body {
+  /* Example: padding-top: 70px; */ /* Adjust this value based on your navbar's height */
+}
+.main > section:first-of-type {
+    /* If nav is outside .main, this might be needed for the first section after nav */
+    /* padding-top: 80px; */ /* Adjust based on nav height */
+}
+
+/* Subtle Motion Background for sections (excluding hero) */
+.subtle-motion-bg {
+  position: relative;
+  overflow: hidden; /* Important to contain pseudo-elements */
+}
+.subtle-motion-bg::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 200%; /* Wider than container to allow movement */
+  height: 100%;
+  background-image: linear-gradient(
+    45deg, 
+    rgba(0,0,0,0.03) 25%, 
+    transparent 25%, transparent 50%, 
+    rgba(0,0,0,0.03) 50%, rgba(0,0,0,0.03) 75%, 
+    transparent 75%, transparent 100%
+  );
+  background-size: 60px 60px; /* Size of the repeating pattern */
+  animation: subtleSlide 40s linear infinite;
+  z-index: 0; /* Behind content */
+  opacity: 0.7;
+}
+/* Ensure content in these sections is above the motion background */
+/* .subtle-motion-bg > .container {
+  position: relative;
+  z-index: 1;
+} */
+
+@keyframes subtleSlide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* Slides one full pattern width */
+} 
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+body.dark-mode .bg-white { background-color: #1e1e1e !important; }
+body.dark-mode .shadow-sm { box-shadow: 0 .125rem .25rem rgba(255,255,255,.075) !important; }
+body.dark-mode .navbar-brand span, body.dark-mode .nav-link-custom { color: #c0c0c0; }
+body.dark-mode .nav-link-custom.active, body.dark-mode .nav-link-custom:hover { color: #3da9fc; }
+body.dark-mode .text-muted { color: #a0a0a0 !important; }
+body.dark-mode .display-5, body.dark-mode .fs-1 { color: #f5f5f5; } /* For section titles */
+body.dark-mode .lead { color: #b0b0b0; }
+body.dark-mode .bg-light { background-color: #2a2a2a !important; } /* For sec-3 */
+body.dark-mode .four-boxes { background-color: #2c2c2c; box-shadow: 0 2px 5px rgba(0,0,0,0.3); color: #d0d0d0; }
+body.dark-mode .four-boxes:hover { box-shadow: 0 8px 15px rgba(0,0,0,0.4); }
+body.dark-mode .four-imges, body.dark-mode .three-img { background-color: #333; color: #bbb; border: 1px solid #444; }
+body.dark-mode .detail { background-color: #4a5568; color: #e2e8f0; }
+body.dark-mode .detail:hover { background-color: #2d3748; }
+body.dark-mode .contact-btn { background-color: #2b6cb0; color: white;} /* Adjust if needed */
+body.dark-mode .contact-btn:hover { background-color: #2c5282; }
+body.dark-mode footer.bg-dark.subtle-motion-bg { background-color: #1a1a1a !important; color: #888; } /* More specific for footer */
+body.dark-mode .subtle-motion-bg:not(.sec-1)::before { /* Ensure it applies to sections with motion bg, excluding sec-1 if it ever got the class */
+  background-image: linear-gradient(
+    45deg, 
+    rgba(255,255,255,0.02) 25%, 
+    transparent 25%, transparent 50%, 
+    rgba(255,255,255,0.02) 50%, rgba(255,255,255,0.02) 75%, 
+    transparent 75%, transparent 100%
+  );
+  opacity: 0.7; /* Adjusted opacity for better contrast in dark mode */
+}
+/* Dark mode toggle icon colors */
+body.dark-mode .dark-mode-toggle svg { fill: #e0e0e0; }
+body:not(.dark-mode) .dark-mode-toggle svg { fill: #333; }
+
