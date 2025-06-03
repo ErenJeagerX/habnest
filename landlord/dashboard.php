@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['name'])){
-    header('Location:../login.php');
+    header('Location:../login_logout/login.php');
 }
 ?>
 <!DOCTYPE html>
@@ -41,7 +41,7 @@ if (!isset($_SESSION['name'])){
         <div class="admin-info">
             <div class=>Welcome <span><?= $_SESSION['name'] ?></span></div>
             <div class>
-                <a href="../logout.php" class="text-decoration-none">Logout</a>
+                <a href="../login_logout/logout.php" class="text-decoration-none">Logout</a>
             </div>
         </div>
         </div>

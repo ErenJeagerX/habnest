@@ -1,0 +1,100 @@
+body {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+.wrapper-login {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+.wrapper-login h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+.wrapper-login h1 span {
+  color: #dc5641;
+}
+.input-field {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+.input-field input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+.input-field input:focus {
+  border-color: #dc5641;
+  outline: none;
+}
+.input-field label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #6c757d;
+  font-size: 1rem;
+  transition: all 0.3s;
+  pointer-events: none;
+}
+.input-field input:focus + label,
+.input-field input:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 10px;
+  font-size: 0.8rem;
+  color: #dc5641;
+  background: #fff;
+  padding: 0 5px;
+}
+.input-field .show-pwd {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #6c757d;
+}
+.input-field .error-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #dc5641;
+  display: none;
+}
+.form-check {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+.form-check-label {
+  color: #333;
+}
+button.text-white {
+  background: #dc5641;
+  border: none;
+  padding: 0.75rem;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+button.text-white:hover {
+  background: #dc5641;
+}
+.alert {
+  margin-bottom: 1rem;
+}
