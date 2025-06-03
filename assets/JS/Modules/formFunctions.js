@@ -38,7 +38,7 @@ function formFunctions(){
         setBackToDefault();
         checkErrors();
         // if no errors send the data to do a server side validation
-        if(checkEquality(errors, noErrors)) {
+        if(checkObjectEquality(errors, noErrors)) {
             fetch('../includes/check-form_errors.php', {
                 method: 'POST',
                 headers: {
@@ -72,7 +72,7 @@ function formFunctions(){
                 // copy the data fetched to the errors object
                 errors = {...data};
                 // after doing server side validation, if no errors, send the data to a php file to insert it to DB 
-                if(checkEquality(errors, noErrors)){
+                if(checkObjectEquality(errors, noErrors)){
                     fetch('add-landlords.php', {
                         method: 'POST',
                         headers: {
@@ -335,7 +335,7 @@ function formFunctions(){
         }
     }
     // check objects equality 
-    function checkEquality(obj1, obj2) {
+    function checkObjectEquality(obj1, obj2) {
         return JSON.stringify(obj1) === JSON.stringify(obj2);
     }
     // capitalize
@@ -346,15 +346,14 @@ function formFunctions(){
     function isPureString(str) {
         return /^[A-Za-z]+$/.test(str);
     }
-
-    function isPureNum(str) {
-        return /^[0-9]+$/.test(str);
-    }
-
+    
     function allowedUsername(username){
         return /^[a-zA-Z0-9_.]+$/.test(username);
     }
 }
 
+export function isPureNum(str) {
+    return /^[0-9]+$/.test(str);
+}
 
 export default formFunctions;
