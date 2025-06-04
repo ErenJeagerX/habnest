@@ -5,6 +5,8 @@ if (!isset($_SESSION['name'])){
     header('Location:../login_logout/login.php');
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
