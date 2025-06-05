@@ -2,29 +2,148 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: 14px;
+  font-family: 'Roboto', Arial, sans-serif; /* Reverted to Roboto */
+}
+
+/* Container for consistent content width */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px; /* Added horizontal padding for smaller screens */
 }
 
 /* Navigation starts here */
 
-nav ul li{
-  
-  padding: 0px 20px;
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 1000;
+  box-shadow: none;
+  padding: 10px 0; /* Adjusted padding for top/bottom */
 }
+
 nav ul {
-  
+  display: flex;
+  list-style: none;
+  align-items: center;
+  /* padding: 10px 0; Removed redundant padding */
 }
+
+nav ul li {
+  padding: 0 25px; /* Adjusted padding for better spacing */
+}
+
 nav a {
   text-decoration: none;
   color: rgb(68, 68, 68);
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease; /* Added transition for hover */
 }
+
 nav a:hover {
-  transition: 1s;
-  color: rgb(177, 177, 177);
-}nav img{
+  color: #e3533f; /* Reverted hover color to brand color */
+}
+
+nav img {
+  /* This rule is now less relevant if using CSS hamburger */
   width: 30px;
   height: 30px;
   border-radius: 50px;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle-label {
+  display: none;
+  cursor: pointer;
+}
+
+/* Updated hamburger icon styling */
+.hamburger { /* Renamed from .hamburger-icon in previous CSS for clarity and consistency */
+  width: 24px; /* Adjusted width for standard hamburger size */
+  height: 18px; /* Adjusted height */
+  position: relative;
+  display: block; /* Ensure it's a block element */
+}
+
+.hamburger::before,
+.hamburger::after,
+.hamburger span {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px; /* Thickness of lines */
+  background-color: black; /* Color of hamburger lines */
+  transition: all 0.3s ease;
+}
+
+.hamburger::before {
+  top: 0;
+}
+
+.hamburger span {
+  top: 7.5px; /* Position of middle line */
+}
+
+.hamburger::after {
+  bottom: 0;
+}
+
+/* Hamburger animation on toggle */
+.nav-toggle:checked + .nav-toggle-label .hamburger::before {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle:checked + .nav-toggle-label .hamburger span {
+  opacity: 0;
+}
+
+.nav-toggle:checked + .nav-toggle-label .hamburger::after {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+
+@media (max-width: 768px) {
+  .nav-toggle-label {
+    display: block;
+    position: absolute;
+    top: 15px; /* Adjust based on nav padding */
+    right: 20px;
+  }nav{
+    padding: 30px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* Aligned with nav padding (15px top + 15px bottom + approx 30px height = 60px total nav height) */
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.08);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(1, 1, 1, 1);
+  }
+
+  nav ul li {
+    padding: 15px 20px; /* Adjusted padding for better touch targets */
+    text-align: center;
+    border-bottom: 1px solid #eee; /* Added a subtle separator */
+  }
+  
+  nav ul li:last-child {
+      border-bottom: none; /* No border for the last item */
+  }
+
+  .nav-toggle:checked ~ ul {
+    max-height: 400px; /* Increased max-height to ensure all items fit */
+  }
 }
 
 /* --------- */
@@ -33,80 +152,199 @@ nav a:hover {
 
 .sec-1 {
   background-image: url('../images/hooli.jpg');
-  
+  background-size: cover;
+  background-position: center;
+  min-height: 95vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-top: 60px; /* Added to account for fixed nav height */
 }
+
+.sec-1::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
 .pxy {
   padding: 5% 10%;
+  position: relative;
+  z-index: 2;
+  width: 100%; /* Ensure it takes full width */
 }
+
 .discover {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.95);
   width: 380px;
-  height: 530px;
+  max-width: 100%;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  margin: 0 auto; /* Centered for smaller screens */
 }
+
 .habnest-txt {
   color: #e3533f;
+  font-size: 24px;
+  margin-bottom: 10px;
 }
+
+.discover h1 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.discover p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
 .sharp-border {
   border: 1px solid #b1b1b1;
   width: 60%;
+  margin: 20px auto;
   height: 35px;
   text-align: center;
   padding-top: 7px;
+  font-size: 16px;
 }
+
 .contact-btn {
   border: 1px solid #e3533f;
   width: 100%;
+  max-width: 200px;
   height: 35px;
   background-color: #e3533f;
   color: white;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 20px auto;
 }
-/*  --------- */
+
+.contact-btn:hover {
+  background-color: #c73a2e;
+}
+
+/* --------- */
 
 /* section-2 starts here */
 
 .sec-2 {
   background-image: url('../images/house.jpg');
+  background-size: cover;
+  background-position: center;
   min-height: 110vh;
-  min-width: 100%;
+  padding: 50px 0;
+  position: relative; /* Added for ::before pseudo-element */
 }
+
+.sec-2::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Added overlay */
+  z-index: 1; /* Ensure overlay is behind content */
+}
+
 .txts {
   padding-top: 60px;
+  text-align: center;
+  position: relative; /* Ensure text is above overlay */
+  z-index: 2;
 }
+
+.txts h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #fff; /* Added white color for better contrast */
+}
+
+.txts h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #fff; /* Added white color for better contrast */
+}
+
+.txts p {
+  font-size: 16px;
+  color: #ddd; /* Lighter color for better contrast */
+}
+
 .four-boxes {
   width: 45vh;
-  height: 35vh;
+  max-width: 100%;
+  height: auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: relative; /* Ensure boxes are above overlay */
+  z-index: 2;
 }
+
 .lndLord {
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
   margin: 0 auto 20px;
 }
+
 .lnd {
-  background-color: aquamarine;
+  background-color: rgba(127, 255, 212, 0.9);
+}
+
+.rental {
+  background-color: rgba(127, 255, 212, 0.9);
 }
 
 .detail {
   background-color: #e3533f;
   border: 1px solid #e3533f;
-  border-radius: 10px;
+  border-radius: 5px;
   width: 50%;
+  max-width: 150px;
   height: 30px;
   color: white;
+  text-align: center;
+  line-height: 30px;
+  margin: 20px auto;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.rental {
-  background-color: aquamarine;
+.detail:hover {
+  background-color: #c73a2e;
 }
 
 .rentex {
-  background-color: aquamarine;
+  background-color: rgba(127, 255, 212, 0.9);
 }
+
 .trstLord {
-  background-color: aquamarine;
+  background-color: rgba(127, 255, 212, 0.9);
 }
+
 .renterex {
-  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
-  margin-bottom: 60px;
+  justify-content: center;
+  margin: 0 auto 60px;
 }
 
 /* ------------ */
@@ -115,15 +353,32 @@ nav a:hover {
 
 /* four house images */
 .first-img-wrapper {
+  display: flex;
+  flex-wrap: wrap;
   gap: 30px;
+  justify-content: center;
+  margin-bottom: 30px;
 }
+
 .four-imges {
   width: 50vh;
+  max-width: 100%;
   height: 35vh;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
+
 .first-img {
   background-image: url('../images/hooli.jpg');
 }
+
 .second-img {
   background-image: url('../images/house2.jpg');
 }
@@ -131,37 +386,69 @@ nav a:hover {
 .third-img {
   background-image: url('../images/hoos.jpg');
 }
+
 .forth-img {
   background-image: url('../images/house4.jpg');
 }
+
 /* four house images end here */
 
 /* three house images */
 .third-img-wrapper {
+  display: flex;
+  flex-wrap: wrap;
   gap: 30px;
+  justify-content: center;
 }
+
 .three-img {
   width: 40vh;
+  max-width: 100%;
   height: 30vh;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
+
 .img-1 {
   background-image: url('../images/sieuwert-otterloo-aren8nutd1Q-unsplash.jpg');
 }
+
 .img-2 {
   background-image: url('../images/webaliser-_TPTXZd9mOo-unsplash.jpg');
 }
+
 .img-3 {
   background-image: url('../images/todd-kent-178j8tJrNlc-unsplash.jpg');
 }
+
 .img-wrapper {
-  gap: 20px;
-  margin: 0 auto;
+  text-align: center;
+  margin: 20px auto;
 }
+
+.img-wrapper p {
+  font-size: 16px;
+  color: #333;
+}
+
 /* three house images end here */
 
 /* section-3 end here */
 
 /* footer */
+footer {
+  background-color: #f8f8f8;
+  min-height: 10vh;
+  padding: 20px 0;
+}
+
 .icon img {
   width: 50px;
   height: 30px;
@@ -169,11 +456,12 @@ nav a:hover {
   margin-top: 10px;
   border-radius: 10px;
 }
-footer {
-  min-height: 10vh;
-}
+
 .ftr {
   text-align: center;
   padding-top: 20px;
+  font-size: 16px;
+  color: #333;
 }
-/*  ------------ */
+
+/* ------------ */
