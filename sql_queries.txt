@@ -1,3 +1,16 @@
+-- users table
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    role VARCHAR(10),
+    first_name VARCHAR(30) NOT NULL,
+    last_name VARCHAR(30) NOT NULL,
+    username VARCHAR(30) NOT NULL UNIQUE,
+    pwd VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(15),
+    profile_pic VARCHAR(255) DEFAULT 'uploads/profile_pic/default_pic.png',
+    last_active DATETIME,
+    joined_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
 -- Properties table
 CREATE TABLE properties (
     id INT AUTO_INCREMENT PRIMARY KEY,
