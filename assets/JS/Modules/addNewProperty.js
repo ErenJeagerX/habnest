@@ -1,4 +1,5 @@
 import displayStatus from './displayStatus.js';
+import fetchProperties from './fetchProperties.js';
 function addNewPpty(){
     validateForm();
 }
@@ -232,6 +233,7 @@ function validateForm() {
                     form.querySelector('.charcount').classList.add('hidden');
                     coverIndex = 0; // reset cover index
                     bedroomsEl.textContent = 'Select'; // reset bedrooms selection
+                    fetchProperties(); // refresh properties list
                 }
                 else {
                     displayStatus('error', 'An error occurred adding the property');

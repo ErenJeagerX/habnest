@@ -121,117 +121,8 @@ if (!isset($_SESSION['name'])){
                                     <p>Actions</p>
                                 </div>
                             </div>
-                            <div class="tbody">
-                                <div class="row">
-                                    <div class="ppty-img">
-                                        <img src="../assets/imgs/Property 1.jpg" alt="property 1" class="property_image">
-                                    </div>
-                                    <p class="property_name">Modern Apartment</p>
-                                    <p class="property_location">Addis Ababa</p>
-                                    <p class="property_status" data-status="available">Available</p>
-                                    <div class="actions">
-                                        <div class="action view-ppty">
-                                            <i class="fas fa-eye view-icon"></i>
-                                            <div class="action_title">View</div>
-                                        </div>
-                                        <div class="action edit-ppty">
-                                            <i class="fas fa-pencil edit-icon"></i>
-                                            <div class="action_title">Edit</div>
-                                        </div>
-                                        <div class="action delete-ppty open-modal" data-modal="modal-delete-ppty">
-                                            <i class="fas fa-trash delete-icon"></i>
-                                            <div class="action_title">Delete</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="ppty-img">
-                                        <img src="../assets/imgs/Property 1.jpg" alt="property 1" class="property_image">
-                                    </div>
-                                    <p class="property_name">Modern Apartment</p>
-                                    <p class="property_location">Addis Ababa</p>
-                                    <p class="property_status" data-status="rented">Rented</p>
-                                    <div class="actions">
-                                        <div class="action view-ppty">
-                                            <i class="fas fa-eye view-icon"></i>
-                                            <div class="action_title">View</div>
-                                        </div>
-                                        <div class="action edit-ppty">
-                                            <i class="fas fa-pencil edit-icon"></i>
-                                            <div class="action_title">Edit</div>
-                                        </div>
-                                        <div class="action delete-ppty open-modal" data-modal="modal-delete-ppty">
-                                            <i class="fas fa-trash delete-icon"></i>
-                                            <div class="action_title">Delete</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="ppty-img">
-                                        <img src="../assets/imgs/Property 1.jpg" alt="property 1" class="property_image">
-                                    </div>
-                                    <p class="property_name">Modern Apartment</p>
-                                    <p class="property_location">Addis Ababa</p>
-                                    <p class="property_status" data-status="available">Available</p>
-                                    <div class="actions">
-                                        <div class="action view-ppty">
-                                            <i class="fas fa-eye view-icon"></i>
-                                            <div class="action_title">View</div>
-                                        </div>
-                                        <div class="action edit-ppty">
-                                            <i class="fas fa-pencil edit-icon"></i>
-                                            <div class="action_title">Edit</div>
-                                        </div>
-                                        <div class="action delete-ppty open-modal" data-modal="modal-delete-ppty">
-                                            <i class="fas fa-trash delete-icon"></i>
-                                            <div class="action_title">Delete</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="ppty-img">
-                                        <img src="../assets/imgs/Property 1.jpg" alt="property 1" class="property_image">
-                                    </div>
-                                    <p class="property_name">Modern Apartment</p>
-                                    <p class="property_location">Addis Ababa</p>
-                                    <p class="property_status" data-status="rented">Rented</p>
-                                    <div class="actions">
-                                        <div class="action view-ppty">
-                                            <i class="fas fa-eye view-icon"></i>
-                                            <div class="action_title">View</div>
-                                        </div>
-                                        <div class="action edit-ppty">
-                                            <i class="fas fa-pencil edit-icon"></i>
-                                            <div class="action_title">Edit</div>
-                                        </div>
-                                        <div class="action delete-ppty open-modal" data-modal="modal-delete-ppty">
-                                            <i class="fas fa-trash delete-icon"></i>
-                                            <div class="action_title">Delete</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="ppty-img">
-                                        <img src="../assets/imgs/Property 1.jpg" alt="property 1" class="property_image">
-                                    </div>
-                                    <p class="property_name">Modern Apartment</p>
-                                    <p class="property_location">Addis Ababa</p>
-                                    <p class="property_status" data-status="available">Available</p>
-                                    <div class="actions">
-                                        <div class="action view-ppty">
-                                            <i class="fas fa-eye view-icon"></i>
-                                            <div class="action_title">View</div>
-                                        </div>
-                                        <div class="action edit-ppty">
-                                            <i class="fas fa-pencil edit-icon"></i>
-                                            <div class="action_title">Edit</div>
-                                        </div>
-                                        <div class="action delete-ppty open-modal" data-modal="modal-delete-ppty">
-                                            <i class="fas fa-trash delete-icon"></i>
-                                            <div class="action_title">Delete</div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="tbody properties-list">
+                                
                             </div>
                             <div class="page-controls">
                                 <div class="control previous">
@@ -347,7 +238,7 @@ if (!isset($_SESSION['name'])){
         <!-- dashboard content end-->
         <!--modals start -->
         <!-- delete property modal -->
-        <div class="modal modal-delete-ppty">
+        <div class="modal modal-delete-ppty" data-pptyId="">
             <p>Are you sure you want to delete this property?</p>
             <div class="modal-btns">
                 <div class="modal-btn delete-modal">Yes, delete</div>

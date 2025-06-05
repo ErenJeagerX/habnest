@@ -79,7 +79,7 @@ $otherImagePathsForDB = [];
 
 define('MAX_FILE_SIZE', 5 * 1024 * 1024); // 5MB
 $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
-$uploadDir = 'uploads/'; // Relative to this script's location
+$uploadDir = '../uploads/properties/'; // Relative to this script's location
 
 if (!is_dir($uploadDir)) {
     if (!mkdir($uploadDir, 0775, true)) {
