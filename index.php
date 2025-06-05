@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="../icon/image (7).jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/imgs/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="./assets/css/home.css" />
     <title>Habnest</title>
@@ -15,7 +15,7 @@
         <div class="container-fluid">
           <ul class="d-flex gap-3 list-unstyled text-secondary pt-3">
             <li>
-              <a href="#"><img src="icon/image (7).jpg" alt="" /></a>
+              <a href="#"><img src="./assets/imgs/favicon.png" alt="" /></a>
             </li>
             <li><a href="#">EthioRent</a></li>
             <li><a href="#">Home</a></li>

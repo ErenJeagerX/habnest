@@ -15,7 +15,6 @@ function validateForm() {
     const descriptionInput = form.querySelector('#property_description');
     const priceInput = form.querySelector('#property_price');
     const bedroomsEl = form.querySelector('.selected_text');
-    const errorEls = form.querySelectorAll('.ppty-error');
     const presetLat = 10.33;
     const presetLng = 37.72;
     //**** display error messages live ****//
@@ -215,11 +214,11 @@ function validateForm() {
             formData.append('bedrooms', bedroomsEl.textContent);
             formData.append('cover_index', coverIndex);
             // append images to formData
-            images.forEach((img) => {
+            images.forEach(img => {
                 formData.append(`files[]`, img);
             });
             fetch('add_property.php', {
-                method: 'POST',
+                method: 'POST', // Corrected typo: 'method' instead of 'mothod'
                 body: formData,
             })
             .then(response => response.json())
@@ -232,6 +231,7 @@ function validateForm() {
                     uploadInput.disabled = false;
                     form.querySelector('.charcount').classList.add('hidden');
                     coverIndex = 0; // reset cover index
+                    bedroomsEl.textContent = 'Select'; // reset bedrooms selection
                 }
                 else {
                     displayStatus('error', 'An error occurred adding the property');
