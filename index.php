@@ -20,6 +20,7 @@
     </div>
   </label>
   <ul>
+    <li><a href="#"><img src="./assets/imgs/Habnest logo.png" alt=""></a></li>
     <li><a href="#">EthioRent</a></li>
     <li><a href="#">Home</a></li>
     <li><a href="#">About us</a></li>
@@ -97,37 +98,39 @@
 <section>
   <div class="container">
     <div class="pxy">
-      <h1>Text here</h1>
-      <h3>Our Advantages</h3>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      <div class="text-center">
+        <h1>Text here</h1>
+        <h3>Our Advantages</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      </div>
       <div class="first-img-wrapper">
         <div class="four-imges first-img">
-          <p>textttttttt</p>
+        
         </div>
         <div class="four-imges second-img">
-          <p>texttttttt</p>
+          
         </div>
       </div>
       <div class="first-img-wrapper">
         <div class="four-imges third-img">
-          <p>texttt</p>
+         
         </div>
         <div class="four-imges forth-img">
-          <p>texttt</p>
+          
         </div>
       </div>
-      <div class="img-wrapper">
+      <div class="img-wrapper text-center">
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
       </div>
       <div class="third-img-wrapper">
         <div class="three-img img-1">
-          <p>textaaaaaaaa</p>
-        </div>
+
+      </div>
         <div class="three-img img-2">
-          <p>textaaaaaaaa</p>
+          
         </div>
         <div class="three-img img-3">
-          <p>textaaaaaaaa</p>
+          
         </div>
       </div>
     </div>
