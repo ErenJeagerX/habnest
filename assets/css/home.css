@@ -63,9 +63,8 @@ nav img {
   cursor: pointer;
 }
 
-/* Updated hamburger icon styling */
+/*  hamburger icon */
 .hamburger {
-  /* Renamed from .hamburger-icon in previous CSS for clarity and consistency */
   width: 24px; /* Adjusted width for standard hamburger size */
   height: 18px; /* Adjusted height */
   position: relative;
@@ -265,13 +264,13 @@ nav img {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1; /* Ensure overlay is behind content */
+  z-index: 1; /*  overlay  */
 }
 
 .txts {
   padding-top: 60px;
   text-align: center;
-  position: relative; /* Ensure text is above overlay */
+  position: relative; /*  text is above overlay */
   z-index: 2;
 }
 
