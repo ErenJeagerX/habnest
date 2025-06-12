@@ -18,7 +18,7 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #fff;
+  background-color: white;
   z-index: 1000;
   box-shadow: none;
   padding: 10px 0; /* Adjusted padding for top/bottom */
@@ -49,9 +49,9 @@ nav a:hover {
 
 nav img {
   /* This rule is now less relevant if using CSS hamburger */
-  width: 60px;
-  height: 30px;
-  border-radius: 10px;
+  width: 35;
+  height: 35px;
+  border-radius: 13px;
 }
 
 .nav-toggle {
@@ -240,7 +240,8 @@ nav img {
 }
 
 .contact-btn:hover {
-  background-color: #c73a2e;
+  background-color: rgba(227, 83, 63, 0.7);
+  border-radius: 1px solid rgba(227, 83, 63, 0.7);
 }
 
 /* --------- */
@@ -312,11 +313,11 @@ nav img {
 }
 
 .lnd {
-  background-color: rgba(127, 255, 212, 0.9);
+  background-color: rgba(227, 83, 63, 0.7);
 }
 
 .rental {
-  background-color: rgba(127, 255, 212, 0.9);
+  background-color: rgba(227, 83, 63, 0.7);
 }
 
 .detail {
@@ -339,11 +340,11 @@ nav img {
 }
 
 .rentex {
-  background-color: rgba(127, 255, 212, 0.9);
+  background-color: rgba(227, 83, 63, 0.7);
 }
 
 .trstLord {
-  background-color: rgba(127, 255, 212, 0.9);
+  background-color: rgba(227, 83, 63, 0.7);
 }
 
 .renterex {
@@ -446,7 +447,7 @@ nav img {
 
 /* footer */
 footer {
-  background-color: #f8f8f8;
+  background-color: rgb(227, 83, 63);
   min-height: 10vh;
   padding: 20px 0;
 }
@@ -463,7 +464,7 @@ footer {
   text-align: center;
   padding-top: 20px;
   font-size: 16px;
-  color: #333;
+  color: white;
 }
 
 /* ------------ */
