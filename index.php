@@ -32,6 +32,7 @@
           </li>
           <li><a href="index.php">Home</a></li>
           <li><a href="#">About us</a></li>
+          <li><a href="./properties.php">Properties</a></li>
           <li><a href="./login.php">Login</a></li>
         </ul>
       </nav>
