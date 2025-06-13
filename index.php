@@ -26,7 +26,7 @@
             <span></span>
           </div>
         </label>
-        <ul>
+        <ul class="align-items-center">
           <li>
             <a href="index.php"><img src="./assets/imgs/homepage_logo.png" alt="" /></a>
           </li>
