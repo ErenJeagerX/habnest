@@ -12,9 +12,9 @@
     <script src="./assets/js/properties.js" defer></script>
 </head>
 <body>
-      <?php
-      include("./includes/navbar.php");
-      ?>
+    <?php
+        include("./includes/navbar.php");
+    ?>
     <div class="container">
         <header>
             <h1>All Properties</h1>

@@ -11,10 +11,8 @@ include('login.php');
           </div>
         </label>
         <ul class="align-items-center">
-          <li>
-            <a href="index.php"><img src="./assets/imgs/homepage_logo.png" alt="" /></a>
-          </li>
-            
+
+                <li><a href="index.php"><img src="./assets/imgs/homepage_logo.png" alt=""/></a></li>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="#">About us</a></li>
                 <li><a href="./properties.php">Properties</a></li>

@@ -21,19 +21,18 @@ nav {
   background-color: white;
   z-index: 1000;
   box-shadow: none;
-  padding: 5px 0;
   
 }
 
 nav ul {
   display: flex;
   list-style: none;
-  align-items: center;
+ 
   /* padding: 10px 0; Removed redundant padding */
 }
 
 nav ul li {
-  padding: 0 25px; /* Adjusted padding for better spacing */
+  padding: 7px 25px; /* Adjusted padding for better spacing */
 }
 
 nav a {

@@ -5,9 +5,14 @@ document.getElementById("updateForm").addEventListener("submit", function(e) {
   const formData = new FormData(form);
   formData.append("update", "1"); // Add the 'update' flag like PHP expects
 
-  fetch("update_property.php?id=123", {
+  fetch("edit_property.php?id=123", {
     method: "POST",
-    body: formData,
+    headers:{
+                      'Content-type': 'application/x-www-form-urlencoded'
+    },
+    body: new URLSearchParams({
+                property_id: this.dataset.pptyId
+            })
   })
   .then(response => response.json())
   .then(data => {
