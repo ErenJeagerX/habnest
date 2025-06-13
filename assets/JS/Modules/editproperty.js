@@ -1,4 +1,4 @@
-document.getElementById("updateForm").addEventListener("submit", function(e) {
+document.getElementsByClassName("edit-ppty").addEventListener("submit", function(e) {
   e.preventDefault(); // Prevent form from reloading the page
 
   const form = e.target;
