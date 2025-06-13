@@ -21,8 +21,7 @@ nav {
   background-color: white;
   z-index: 1000;
   box-shadow: none;
-  align-items: center;
-  text-align: center;
+  padding: 5px 0;
   
 }
 
