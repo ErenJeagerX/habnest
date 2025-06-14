@@ -2,7 +2,7 @@
 
 $host = 'localhost';
 $user = 'root';
-$pwd = 'bini@12';
+$pwd = '';
 $db_name = 'habnest';
 
 try {
