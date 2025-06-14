@@ -14,6 +14,7 @@ function fetchProperties(propertiesContainer){
     .then(res => {
         if(res.success) {
             const properties = res.properties;
+            propertiesContainer.innerHTML = ""; // Clear existing content before adding new properties
             properties.forEach(property => {
                 fetch('./includes/fetch_landlord.php', {
                     headers: {
@@ -25,9 +26,9 @@ function fetchProperties(propertiesContainer){
                     })
                 })
                 .then(response => response.json())
-                .then(res => {
-                    if(res.success) {
-                        const landlords = res.landlords;
+                .then(landlordRes => { // Renamed for clarity
+                    if(landlordRes.success) {
+                        const landlords = landlordRes.landlords;
                         landlords.forEach(landlord => {
                             if((+landlord.id === +property.landlord_id) && !(propertiesContainer.children.length > properties.length)) {
                                 propertiesContainer.innerHTML += `
@@ -55,10 +56,11 @@ function fetchProperties(propertiesContainer){
                         });
                     }
                 });
-                const pptyCountElements = document.querySelectorAll('.count');
-                pptyCountElements.forEach(countElement => {
-                    countElement.textContent = properties.length;
-                })
+            });
+            // Update property count once after all properties are processed
+            const pptyCountElements = document.querySelectorAll('.count');
+            pptyCountElements.forEach(countElement => {
+                countElement.textContent = properties.length;
             });
         }
     });
