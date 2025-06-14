@@ -1,12 +1,12 @@
 <?php
 include('./includes/login.php');
 
-// if(isset($_SESSION['id']) && $_SESSION['role'] === 'landlord'){
-//     header("Location: landlord/dashboard.php");
-// }
-// elseif(isset($_SESSION['id']) && $_SESSION['role'] === 'admin'){
-//     header("Location: admin/dashboard.php");
-// }
+if(isset($_SESSION['id']) && $_SESSION['role'] === 'landlord'){
+    header("Location: landlord/dashboard.php");
+}
+elseif(isset($_SESSION['id']) && $_SESSION['role'] === 'admin'){
+    header("Location: admin/dashboard.php");
+}
 
 $passwd_error = $usr_error = $message = "";
 // Check if the form has been submitted

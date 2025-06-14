@@ -29,9 +29,9 @@ function fetchProperties(propertiesContainer){
                     if(res.success) {
                         const landlords = res.landlords;
                         landlords.forEach(landlord => {
-                            if(+landlord.id === +property.landlord_id) {
+                            if((+landlord.id === +property.landlord_id) && !(propertiesContainer.children.length > properties.length)) {
                                 propertiesContainer.innerHTML += `
-                                <article class="property-card">
+                                <article class="property-card" id="${property.id}">
                                     <div class="card-image">
                                     <img src="./includes/${property.property_image}" alt="Property ${property.id}">
                                     </div>
