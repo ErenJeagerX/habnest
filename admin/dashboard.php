@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['name'])){
+    header('Location: ../login.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +34,7 @@
                     <div class="nav-name">Landlords</div>
                 </a></li>
             </ul>
-            <div class="admin-info">Admin <span>Biniyam</span></div>
+            <div class="admin-info">Admin <span><?php echo $_SESSION['name'] ?></span></div>
         </div>
         <!-- dashboard sidebar end -->
         <!-- dashboard content start-->

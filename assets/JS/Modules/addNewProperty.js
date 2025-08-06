@@ -21,8 +21,8 @@ function validateForm() {
     //**** display error messages live ****//
     // length validation for title and description
     titleInput.addEventListener('input', function() { 
-        if (titleInput.value.length < 5 && titleInput.value) {
-            showErrorPopup('Title must be at least 5 characters', titleInput);
+        if (titleInput.value.length < 10 && titleInput.value) {
+            showErrorPopup('Title must be at least 10 characters', titleInput);
         } else if (!titleInput.value) {
             showErrorPopup('Title is required', titleInput);
         } 
@@ -80,13 +80,22 @@ function validateForm() {
     let coverIndex = 0;
     uploadInput.addEventListener('change', function(){
         const uploadedImages = form.querySelectorAll('.uploaded-image');
-        images = [...uploadInput.files].filter(file => file.type.includes('image/'));
-        if(images.length + uploadedImages.length <=3) {
+        [...uploadInput.files].forEach(file => {
+            if(file.type.includes('image/') && images.length + [...uploadInput.files].length <= 3) {
+                images.push(file);
+            }
+        });
+        if(images.length <=3) {
             for(let img of images) {
                 if (img.size > 5 * 1024 * 1024) { // 5MB limit
                     displayStatus('error', 'Image size must be less than 5MB');
                     return;
                 }
+                uploadedImages.forEach(uploadedImg => {
+                    if( uploadedImg.querySelector('img').dataset.name === img.name) {
+                        return; 
+                    }
+                })
                 const uploadedImg = document.createElement('div');
                 uploadedImg.className = "uploaded-image";
                 uploadedImg.innerHTML = `
@@ -237,7 +246,6 @@ function validateForm() {
                 }
                 else {
                     displayStatus('error', 'An error occurred adding the property');
-                    console.log(data.error);
                 }
             })
             .catch(error => {

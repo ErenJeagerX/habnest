@@ -238,10 +238,10 @@ if (!isset($_SESSION['name'])){
         <!-- dashboard content end-->
         <!--modals start -->
         <!-- delete property modal -->
-        <div class="modal modal-delete-ppty" data-pptyId="">
+        <div class="modal modal-delete-ppty">
             <p>Are you sure you want to delete this property?</p>
             <div class="modal-btns">
-                <div class="modal-btn delete-modal">Yes, delete</div>
+                <div class="modal-btn delete-modal" data-pptyId="">Yes, delete</div>
                 <div class="modal-btn close-modal" data-modal="modal-delete-ppty">Cancel</div>
             </div>
         </div>

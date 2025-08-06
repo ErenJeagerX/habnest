@@ -1,4 +1,5 @@
 import modalListeners from "./modals.js";
+import deletePropertyButtonListener from "./deleteProperty.js";
 function fetchProperties() {
     fetch('fetch_properties.php')
     .then(response => response.json())
@@ -33,21 +34,27 @@ function fetchProperties() {
                     </div>
                 `
             })
-            //select
+            // modal functionality
             const modals = document.querySelectorAll('.modal');
             const openBtns = document.querySelectorAll('.open-modal');
             const closeBtns = document.querySelectorAll('.close-modal');
             modalListeners(modals, openBtns, closeBtns);
             // deleting functionality
             const deleteButtons = document.querySelectorAll('.delete-ppty');
-            const deletPptyModal = document.querySelector('.modal-delete-ppty');
-            deleteButtons.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    deletPptyModal.dataset.pptyId = btn.dataset.id;
-                })
-            });
+            initDeleteButtons(deleteButtons);
+            deletePropertyButtonListener();
         }
     })
+}
+
+// delete button listeners
+function initDeleteButtons(deleteBtns) {
+    const deletePptyModal = document.querySelector('.modal-delete-ppty');
+    deleteBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            deletePptyModal.querySelector('.delete-modal').dataset.pptyId = btn.dataset.id;
+        });
+    });
 }
 
 export default fetchProperties;
