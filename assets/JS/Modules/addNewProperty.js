@@ -21,8 +21,8 @@ function validateForm() {
     //**** display error messages live ****//
     // length validation for title and description
     titleInput.addEventListener('input', function() { 
-        if (titleInput.value.length < 10 && titleInput.value) {
-            showErrorPopup('Title must be at least 10 characters', titleInput);
+        if (titleInput.value.length < 5 && titleInput.value) {
+            showErrorPopup('Title must be at least 5 characters', titleInput);
         } else if (!titleInput.value) {
             showErrorPopup('Title is required', titleInput);
         } 
@@ -68,7 +68,7 @@ function validateForm() {
                 charCountEl.querySelector('.count').classList.add('max');
             }
             if(this.value.length > 149) {
-                this.value = this.value.slice(0, 149);
+                this.value = this.value.slice(0, 150);
             }
         }
         else {
@@ -79,94 +79,89 @@ function validateForm() {
     let images= [];
     let coverIndex = 0;
     uploadInput.addEventListener('change', function(){
-        const uploadedImages = form.querySelectorAll('.uploaded-image');
+        // images = [...uploadInput.files].filter(file => file.type.includes('image/'));
         [...uploadInput.files].forEach(file => {
-            if(file.type.includes('image/') && images.length + [...uploadInput.files].length <= 3) {
-                images.push(file);
+            if(images.length < 3){
+                if(file.size < 5 * 1024 * 1024){
+                    images.push(file);
+                }
+                else {
+                    displayStatus('error', 'Image size must be less than 5MB')
+                }
+            }
+            else {
+             displayStatus('error', 'Please upload exactly 3 images');
             }
         });
-        if(images.length <=3) {
-            for(let img of images) {
-                if (img.size > 5 * 1024 * 1024) { // 5MB limit
-                    displayStatus('error', 'Image size must be less than 5MB');
-                    return;
-                }
-                uploadedImages.forEach(uploadedImg => {
-                    if( uploadedImg.querySelector('img').dataset.name === img.name) {
-                        return; 
+        imageContainer.innerHTML = '';
+        for(let img of images) {
+            const uploadedImg = document.createElement('div');
+            uploadedImg.className = "uploaded-image";
+            uploadedImg.innerHTML = `
+            <img src="${URL.createObjectURL(img)}" alt="${img.name}" data-name="${img.name}">      
+            <div class="layer">      
+                <div class="cover-btn layer-btn">Set as cover</div>  
+                <div class="delete-btn layer-btn">Delete</div>           
+            </div>`
+            imageContainer.appendChild(uploadedImg);
+        }
+        // if 3 images are uploaded, disable the upload input
+        if (form.querySelectorAll('.uploaded-image').length === 3) {
+            uploadBtn.classList.add('inactive');
+            uploadInput.disabled = true;
+        }
+        // cover buttons functionality
+        // cover badge
+        const badge = document.createElement('div');
+        badge.className = 'badge';
+        badge.textContent = 'Cover';
+        // set first image as cover
+        if(form.querySelector('.uploaded-image')){
+            form.querySelector('.uploaded-image').appendChild(badge);
+        }
+        const coverBtns = document.querySelectorAll('.cover-btn');
+        coverBtns.forEach(btn => {
+            btn.addEventListener('click', function(){
+                // remove badge from previous cover image
+                form.querySelectorAll('.uploaded-image').forEach(img => {
+                    img.querySelector('.badge')?.remove();
+                });
+                // add badge to current cover image
+                this.parentElement.parentElement.appendChild(badge);
+                // change cover image index
+                images.forEach((img, index) => {
+                    if(img.name === this.parentElement.parentElement.querySelector('img').dataset.name) {
+                        coverIndex = index;
                     }
-                })
-                const uploadedImg = document.createElement('div');
-                uploadedImg.className = "uploaded-image";
-                uploadedImg.innerHTML = `
-                <img src="${URL.createObjectURL(img)}" alt="${img.name}" data-name="${img.name}">      
-                <div class="layer">      
-                    <div class="cover-btn layer-btn">Set as cover</div>  
-                    <div class="delete-btn layer-btn">Delete</div>           
-                </div>`
-                imageContainer.appendChild(uploadedImg);
-            }
-            // if 3 images are uploaded, disable the upload input
-            if (form.querySelectorAll('.uploaded-image').length === 3) {
-                uploadBtn.classList.add('inactive');
-                uploadInput.disabled = true;
-            }
-            // cover buttons functionality
-            // cover badge
-            const badge = document.createElement('div');
-            badge.className = 'badge';
-            badge.textContent = 'Cover';
-            // set first image as cover
-            if(form.querySelector('.uploaded-image')){
-                form.querySelector('.uploaded-image').appendChild(badge);
-            }
-            const coverBtns = document.querySelectorAll('.cover-btn');
-            coverBtns.forEach(btn => {
-                btn.addEventListener('click', function(){
-                    // remove badge from previous cover image
-                    form.querySelectorAll('.uploaded-image').forEach(img => {
-                        img.querySelector('.badge')?.remove();
-                    });
-                    // add badge to current cover image
-                    this.parentElement.parentElement.appendChild(badge);
-                    // change cover image index
-                    images.forEach((img, index) => {
-                        if(img.name === this.parentElement.parentElement.querySelector('img').dataset.name) {
-                            coverIndex = index;
-                        }
-                    });
-                })
-            });
-            // delete buttons functionality
-            const deleteBtns = document.querySelectorAll('.delete-btn');
-            deleteBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const imgDiv = this.parentElement.parentElement;
-                    imgDiv.remove();
-                    const firstImageContainer = form.querySelector('.uploaded-image');
-                    // reset cover index if the cover image is deleted
-                    if (imgDiv.querySelector('img').dataset.name === images[coverIndex].name) {
-                        coverIndex = 0; // reset to first image
-                        if (firstImageContainer) {
-                            const badge = document.createElement('div');
-                            badge.className = 'badge';
-                            badge.textContent = 'Cover';
-                            firstImageContainer.appendChild(badge);
-                        }
-                    }
-                    // if there are less than 3 images, enable the upload input
-                    if (imageContainer.querySelectorAll('.uploaded-image').length < 3) { 
-                        uploadBtn.classList.remove('inactive');
-                        uploadInput.disabled = false;
-                    }
-                    // remove image from the images array
-                    images = images.filter(img => img.name !== imgDiv.querySelector('img').dataset.name);
                 });
             })
-        }
-        else {
-            displayStatus('error', 'Please upload exactly 3 images');
-        }
+        });
+        // delete buttons functionality
+        const deleteBtns = document.querySelectorAll('.delete-btn');
+        deleteBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const imgDiv = this.parentElement.parentElement;
+                imgDiv.remove();
+                const firstImageContainer = form.querySelector('.uploaded-image');
+                // reset cover index if the cover image is deleted
+                if (imgDiv.querySelector('img').dataset.name === images[coverIndex].name) {
+                    coverIndex = 0; // reset to first image
+                    if (firstImageContainer) {
+                        const badge = document.createElement('div');
+                        badge.className = 'badge';
+                        badge.textContent = 'Cover';
+                        firstImageContainer.appendChild(badge);
+                    }
+                }
+                // if there are less than 3 images, enable the upload input
+                if (imageContainer.querySelectorAll('.uploaded-image').length < 3) { 
+                    uploadBtn.classList.remove('inactive');
+                    uploadInput.disabled = false;
+                }
+                // remove image from the images array
+                images = images.filter(img => img.name !== imgDiv.querySelector('img').dataset.name);
+            });
+        });
     });
     // **** handle errors on form submission ****//
     form.addEventListener('submit', function(e) {
@@ -205,7 +200,7 @@ function validateForm() {
         const latitude = document.querySelector('.latitude-box').textContent;
         const longitude = document.querySelector('.longitude-box').textContent;
         if (latitude === presetLat.toString() && longitude === presetLng.toString()) {
-            displayStatus('error', 'Please select a valid location');
+            displayStatus('error', 'Please select a location');
             hasError = true;
         }
         // check for selected bedrooms
@@ -216,7 +211,7 @@ function validateForm() {
         // if no errors, submit the form
         if (!hasError) {
             const formData = new FormData();
-            formData.append('title', titleInput.value);
+            formData.append('title', titleInput.value.charAt(0).toUpperCase() + titleInput.value.slice(1));
             formData.append('description', descriptionInput.value);
             formData.append('price', priceInput.value);
             formData.append('lat', document.querySelector('.latitude-box').dataset.lat);
@@ -236,6 +231,7 @@ function validateForm() {
                 if(data.success) {
                     displayStatus('success', 'Property added successfully');
                     form.reset();
+                    images = [];
                     imageContainer.innerHTML = ''; // clear images
                     uploadBtn.classList.remove('inactive');
                     uploadInput.disabled = false;
@@ -243,9 +239,11 @@ function validateForm() {
                     coverIndex = 0; // reset cover index
                     bedroomsEl.textContent = 'Select'; // reset bedrooms selection
                     fetchProperties(); // refresh properties list
+                    validateForm(); //refresh
                 }
                 else {
                     displayStatus('error', 'An error occurred adding the property');
+                    console.log(data.error);
                 }
             })
             .catch(error => {

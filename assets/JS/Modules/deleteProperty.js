@@ -5,14 +5,13 @@ function deletePropertyButtonListener(){
     const deleteButton = deletePptyModal.querySelector('.delete-modal');
 
     deleteButton.addEventListener('click', function(){
-        const propertyId = this.dataset.pptyId;
         fetch('delete_property.php',{
             method: 'POST',
             headers: {
                 'Content-type': 'application/x-www-form-urlencoded'
             },
             body: new URLSearchParams({
-                'property_id': propertyId
+                property_id: this.dataset.pptyId
             })
         })
         .then(response => response.json())

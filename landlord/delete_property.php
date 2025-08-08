@@ -19,10 +19,10 @@ $sql = "DELETE FROM properties WHERE id = ? AND landlord_id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("ii", $property_id, $landlord_id);
 $stmt->execute();
-$stmt->close();
-if($conn->affected_rows > 0) {
+if($stmt->affected_rows > 0) {
     echo json_encode(["success" => true, "message" => "Property deleted successfully."]);
 } else {
-    echo json_encode(["success" => false, "message" => "Internal errors"]);
+    echo json_encode(["success" => false, "message" => "Server error"]);
 }
+$stmt->close();
 $conn->close();

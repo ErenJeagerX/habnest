@@ -6,14 +6,14 @@ import addNewPpty from "./Modules/addNewProperty.js";
 import fetchProperties from "./Modules/fetchProperties.js";
 
 window.addEventListener('DOMContentLoaded', function(){
-    selectBox();
     scrollFunctions();
     fetchProperties();
-    map.mapInput();
+    // map.mapInput();
     addNewPpty();
     //select
     const modals = document.querySelectorAll('.modal');
     const openBtns = document.querySelectorAll('.open-modal');
     const closeBtns = document.querySelectorAll('.close-modal');
     modalListeners(modals, openBtns, closeBtns);
+    selectBox();
 })

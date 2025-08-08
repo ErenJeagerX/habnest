@@ -14,9 +14,10 @@ if (!isset($_SESSION['name'])){
     <link rel="shortcut icon" href="../assets/imgs/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/style.css<?php echo "?v=" . time()?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="../assets/JS/dashboard-landlord.js?v=<?php echo time() ?>" defer type="module"></script>
+    <script src="../assets/JS/dashboard-landlord.js<?php echo "?v=" . time()?>" defer type="module"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="stylesheet" href="../../fontawesome/css/all.css">
 </head>
 <body>
     <div class="wrapper-dashboard">
@@ -144,7 +145,7 @@ if (!isset($_SESSION['name'])){
              <section id="add-properties">
                 <div class="section_body">
                     <h2 class="section_title">Add New Property</h2>
-                    <form class="dashboard_card" id="addNewPptyForm">
+                    <form class="dashboard_card ppty-form" id="addNewPptyForm">
                         <div class="flex-container">
                             <div class="ppty-data">
                                 <div class="ppty-details">
@@ -241,9 +242,16 @@ if (!isset($_SESSION['name'])){
         <div class="modal modal-delete-ppty">
             <p>Are you sure you want to delete this property?</p>
             <div class="modal-btns">
-                <div class="modal-btn delete-modal" data-pptyId="">Yes, delete</div>
+                <div class="modal-btn delete-modal">Yes, delete</div>
                 <div class="modal-btn close-modal" data-modal="modal-delete-ppty">Cancel</div>
             </div>
+        </div>
+        <!-- edit property modal -->
+        <div class="modal modal-edit-ppty">
+            <i class="fas fa-close close-modal" data-modal="modal-edit-ppty"></i>
+            <form class="ppty-form" id="editPptyForm">
+                    
+            </form>
         </div>
         <!-- bg layer when modal is active -->
         <div class="layer"></div>
