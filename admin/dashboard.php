@@ -33,6 +33,10 @@ if (!isset($_SESSION['name'])){
                     <i class="fas fa-user-group nav-icon"></i>
                     <div class="nav-name">Landlords</div>
                 </a></li>
+                <li class="nav-link logout-btn"><a href="../includes/logout.php">
+                    <i class="fas fa-sign-out-alt nav-icon"></i>
+                    <div class="nav-name">Logout</div>
+                </a></li>
             </ul>
             <div class="admin-info">Admin <span><?php echo $_SESSION['name'] ?></span></div>
         </div>

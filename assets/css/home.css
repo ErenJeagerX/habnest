@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', Arial, sans-serif; /* Reverted to Roboto */
+  font-family: "Roboto", Arial, sans-serif; /* Reverted to Roboto */
 }
 
 /* Container for consistent content width */
@@ -18,7 +18,7 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #fff;
+  background-color: white;
   z-index: 1000;
   box-shadow: none;
   padding: 10px 0; /* Adjusted padding for top/bottom */
@@ -49,9 +49,9 @@ nav a:hover {
 
 nav img {
   /* This rule is now less relevant if using CSS hamburger */
-  width: 30px;
-  height: 30px;
-  border-radius: 50px;
+  width: 35;
+  height: 35px;
+  border-radius: 13px;
 }
 
 .nav-toggle {
@@ -63,8 +63,8 @@ nav img {
   cursor: pointer;
 }
 
-/* Updated hamburger icon styling */
-.hamburger { /* Renamed from .hamburger-icon in previous CSS for clarity and consistency */
+/*  hamburger icon */
+.hamburger {
   width: 24px; /* Adjusted width for standard hamburger size */
   height: 18px; /* Adjusted height */
   position: relative;
@@ -74,7 +74,7 @@ nav img {
 .hamburger::before,
 .hamburger::after,
 .hamburger span {
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   height: 3px; /* Thickness of lines */
@@ -107,15 +107,21 @@ nav img {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-
 @media (max-width: 768px) {
   .nav-toggle-label {
     display: block;
     position: absolute;
     top: 15px; /* Adjust based on nav padding */
     right: 20px;
-  }nav{
+  }
+  li a img {
+    display: none;
+  }
+  nav {
     padding: 30px;
+  }
+  li a:hover {
+    color: white;
   }
 
   nav ul {
@@ -124,7 +130,7 @@ nav img {
     top: 60px; /* Aligned with nav padding (15px top + 15px bottom + approx 30px height = 60px total nav height) */
     left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.08);
+    background-color: #e3533f;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-in-out;
@@ -136,9 +142,9 @@ nav img {
     text-align: center;
     border-bottom: 1px solid #eee; /* Added a subtle separator */
   }
-  
+
   nav ul li:last-child {
-      border-bottom: none; /* No border for the last item */
+    border-bottom: none; /* No border for the last item */
   }
 
   .nav-toggle:checked ~ ul {
@@ -151,8 +157,10 @@ nav img {
 /* section-1 starts here */
 
 .sec-1 {
-  background-image: url('../images/hooli.jpg');
+  background-image: url("../imgs/image.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
   background-position: center;
   min-height: 95vh;
   display: flex;
@@ -162,13 +170,12 @@ nav img {
 }
 
 .sec-1::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4);
   z-index: 1;
 }
 
@@ -233,7 +240,8 @@ nav img {
 }
 
 .contact-btn:hover {
-  background-color: #c73a2e;
+  background-color: rgba(227, 83, 63, 0.7);
+  border-radius: 1px solid rgba(227, 83, 63, 0.7);
 }
 
 /* --------- */
@@ -241,47 +249,47 @@ nav img {
 /* section-2 starts here */
 
 .sec-2 {
-  background-image: url('../images/house.jpg');
+  background-image: url("../imgs/image3.jpg");
   background-size: cover;
   background-position: center;
   min-height: 110vh;
   padding: 50px 0;
   position: relative; /* Added for ::before pseudo-element */
+  overflow: hidden;
 }
 
 .sec-2::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4); /* Added overlay */
-  z-index: 1; /* Ensure overlay is behind content */
+  z-index: 1; /*  overlay  */
 }
 
 .txts {
   padding-top: 60px;
   text-align: center;
-  position: relative; /* Ensure text is above overlay */
+  position: relative; /*  text is above overlay */
   z-index: 2;
 }
 
 .txts h1 {
   font-size: 28px;
   margin-bottom: 10px;
-  color: #fff; /* Added white color for better contrast */
+  color: black; /* Added white color for better contrast */
 }
 
 .txts h3 {
   font-size: 20px;
   margin-bottom: 15px;
-  color: #fff; /* Added white color for better contrast */
+  color: black; /* Added white color for better contrast */
 }
 
 .txts p {
   font-size: 16px;
-  color: #ddd; /* Lighter color for better contrast */
+  color: black; /* Lighter color for better contrast */
 }
 
 .four-boxes {
@@ -305,11 +313,11 @@ nav img {
 }
 
 .lnd {
-  background-color: rgba(127, 255, 212, 0.9);
+  background-color: rgba(227, 83, 63, 0.7);
 }
 
 .rental {
-  background-color: rgba(127, 255, 212, 0.9);
+  background-color: rgba(227, 83, 63, 0.7);
 }
 
 .detail {
@@ -332,11 +340,11 @@ nav img {
 }
 
 .rentex {
-  background-color: rgba(127, 255, 212, 0.9);
+  background-color: rgba(227, 83, 63, 0.7);
 }
 
 .trstLord {
-  background-color: rgba(127, 255, 212, 0.9);
+  background-color: rgba(227, 83, 63, 0.7);
 }
 
 .renterex {
@@ -376,19 +384,19 @@ nav img {
 }
 
 .first-img {
-  background-image: url('../images/hooli.jpg');
+  background-image: url("../imgs/image4.jpg");
 }
 
 .second-img {
-  background-image: url('../images/house2.jpg');
+  background-image: url("../imgs/image5.jpg");
 }
 
 .third-img {
-  background-image: url('../images/hoos.jpg');
+  background-image: url("../imgs/image6.jpg");
 }
 
 .forth-img {
-  background-image: url('../images/house4.jpg');
+  background-image: url("../imgs/image7.jpg");
 }
 
 /* four house images end here */
@@ -417,20 +425,15 @@ nav img {
 }
 
 .img-1 {
-  background-image: url('../images/sieuwert-otterloo-aren8nutd1Q-unsplash.jpg');
+  background-image: url("../imgs/image8.jpg");
 }
 
 .img-2 {
-  background-image: url('../images/webaliser-_TPTXZd9mOo-unsplash.jpg');
+  background-image: url("../imgs/image2.jpg");
 }
 
 .img-3 {
-  background-image: url('../images/todd-kent-178j8tJrNlc-unsplash.jpg');
-}
-
-.img-wrapper {
-  text-align: center;
-  margin: 20px auto;
+  background-image: url("../imgs/image9.jpg");
 }
 
 .img-wrapper p {
@@ -444,7 +447,7 @@ nav img {
 
 /* footer */
 footer {
-  background-color: #f8f8f8;
+  background-color: rgb(227, 83, 63);
   min-height: 10vh;
   padding: 20px 0;
 }
@@ -461,7 +464,7 @@ footer {
   text-align: center;
   padding-top: 20px;
   font-size: 16px;
-  color: #333;
+  color: white;
 }
 
 /* ------------ */
