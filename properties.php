@@ -8,9 +8,13 @@
     <link rel="shortcut icon" href="./assets/imgs/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="./assets/js/properties.js?v=<?php echo time();?>" defer></script>
+    <link rel="stylesheet" href="./assets/css/home.css" />
+    <script src="./assets/js/properties.js" defer></script>
 </head>
 <body>
-
+    <?php
+        include("./includes/navbar.php");
+    ?>
     <div class="container">
         <header>
             <h1>All Properties</h1>

@@ -1,13 +1,11 @@
 <?php
-session_start(); 
-
-// database connection
-include('./includes/db.php');
+session_start();
+include('./includes/login.php');
 
 if(isset($_SESSION['id']) && $_SESSION['role'] === 'landlord'){
     header("Location: landlord/dashboard.php");
 }
-if(isset($_SESSION['id']) && $_SESSION['role'] === 'admin'){
+elseif(isset($_SESSION['id']) && $_SESSION['role'] === 'admin'){
     header("Location: admin/dashboard.php");
 }
 
