@@ -4,6 +4,12 @@ session_start();
 // database connection
 include('./includes/db.php');
 
+if(isset($_SESSION['id']) && $_SESSION['role'] === 'landlord'){
+    header("Location: landlord/dashboard.php");
+}
+if(isset($_SESSION['id']) && $_SESSION['role'] === 'admin'){
+    header("Location: admin/dashboard.php");
+}
 
 $passwd_error = $usr_error = $message = "";
 // Check if the form has been submitted
@@ -36,6 +42,7 @@ if(isset($_POST['submit'])) {
                     // Password is correct
                     $_SESSION['name'] = $row['first_name'];
                     $_SESSION['id'] = $row['id'];
+                    $_SESSION['role'] = $row['role'];
                     
                     //cookies
                     if(isset($_POST['remember_me'])){

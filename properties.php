@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Habnest | Properties</title>
-    <link rel="stylesheet" href="./assets/css/properties.css">
+    <link rel="stylesheet" href="./assets/css/properties.css?v=<?php echo time(); ?>">
     <link rel="shortcut icon" href="./assets/imgs/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <script src="./assets/js/properties.js" defer></script>
+    <script src="./assets/js/properties.js?v=<?php echo time();?>" defer></script>
 </head>
 <body>
 

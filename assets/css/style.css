@@ -531,10 +531,10 @@ input.errorMode ~ .error-icon {
             background-color: transparent;
             width: fit-content;
         }
-         [data-status='rented'] {
+        .property_status[data-status='rented'] .status-text {
             color: red;
         }
-        .property_status[data-status='available'] {
+        .property_status[data-status='available'] .status-text {
             color: green;
         }
         .property_landlord,
@@ -635,17 +635,24 @@ input.errorMode ~ .error-icon {
     text-align: center;
     border-radius: 5px;
     padding: 0 .2em;
+    display: flex;
+    align-items: center;
+    gap: .3em;
 }
-.property_status[data-status = 'rented'] {
-    background-color: red;
+.status-text {
+    padding: 0 .2em;
+    border-radius: 5px;
 }
-.property_status[data-status = 'available'] {
-    background-color: green;
+.property_status[data-status = 'rented'] .status-text {
+    color: red;
+}
+.property_status[data-status = 'available'] .status-text {
+    color: green;
 }
 .actions {
     color: var(--gray);
     display: flex;
-    gap: .7em;
+    gap: .5em;
     .action {
         font-size: 1.1rem;
         transition: .3s;
@@ -1228,3 +1235,27 @@ input.errorMode ~ .error-icon {
     transform: translateY(-100%);
 }
 
+.slide-toggle-btn {
+    background-color: #ccc;
+    width: 45px;
+    height: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    position: relative;
+}
+.slide-toggle-btn .circle {
+    width: 18px;
+    height: 18px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-18px, -50%);
+    transition: .2s;
+}
+.slide-toggle-btn.active {
+    background-color: rgb(20, 151, 20);
+}
+.slide-toggle-btn.active .circle {
+    transform: translate(0, -50%);
+}

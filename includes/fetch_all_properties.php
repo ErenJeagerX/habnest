@@ -4,7 +4,7 @@ require_once 'db.php';
 
 // Fetch properties from the database
 
-$sql = "SELECT * FROM properties";
+$sql = "SELECT * FROM properties where status = 'available'";
 $result = $conn->query($sql);
 if ($result === false) {
     echo json_encode(["success" => false, "message" => "There is a problem with the server."]);

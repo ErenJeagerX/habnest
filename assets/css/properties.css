@@ -294,15 +294,17 @@ hr {
 
 .btn-details {
     width: 100%;
-    padding: 14px;
+    padding: .5em 0;
     background-color: var(--primary);
     color: white;
     border: none;
     border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.2rem;
+    font-weight: 400;
     cursor: pointer;
     transition: background-color 0.3s;
+    text-decoration: none;
+    text-align: center;
 }
 
 .btn-details:hover {

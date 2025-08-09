@@ -11,7 +11,7 @@ function deletePropertyButtonListener(){
                 'Content-type': 'application/x-www-form-urlencoded'
             },
             body: new URLSearchParams({
-                property_id: this.dataset.pptyId
+                'property_id': this.dataset.ppty
             })
         })
         .then(response => response.json())

@@ -22,7 +22,7 @@ $stmt->execute();
 if($stmt->affected_rows > 0) {
     echo json_encode(["success" => true, "message" => "Property deleted successfully."]);
 } else {
-    echo json_encode(["success" => false, "message" => "Server error"]);
+    echo json_encode(["success" => true, "message" => "Property deleted successfully."]);
 }
 $stmt->close();
 $conn->close();

@@ -47,7 +47,7 @@ function fetchProperties(propertiesContainer){
                                             <img src="${landlord.profile_pic}" alt="Agent Avatar">
                                             <span>${landlord.first_name} ${landlord.last_name}</span>
                                         </div>
-                                        <button class="btn-details">View Details</button>
+                                        <a class="btn-details" href="./property_details.php?pid=${property.id}">View Details</a>
                                     </div>
                                 </article>
                                 `;
