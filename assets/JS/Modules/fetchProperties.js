@@ -16,7 +16,7 @@ function fetchProperties() {
                             <img src="${property.property_image}" alt="property ${property.id}" class="property_image">
                         </div>
                         <p class="property_name">${property.title}</p>
-                        <p class="property_location">Addis Ababa</p>
+                        <p class="property_location">Debre Markos</p>
                         <p class="property_status" data-status="${property.status}">
                         <span class="status-text">${property.status.charAt(0).toUpperCase() + property.status.slice(1)}</span>
                         <span data-ppty="${property.id}" class="slide-toggle-btn ${property.status === 'available' ? 'active' : '' }"> 
@@ -24,10 +24,10 @@ function fetchProperties() {
                         </span>
                         </p>
                         <div class="actions">
-                            <div class="action view-ppty">
+                            <a class="action view-ppty" href="../property_details.php?pid=${property.id}" target="_blank">
                                 <i class="fas fa-eye view-icon"></i>
                                 <div class="action_title">View</div>
-                            </div>
+                            </a>
                             <div class="action edit-ppty open-modal" data-modal="modal-edit-ppty" data-id="${property.id}">
                                 <i class="fas fa-pencil edit-icon"></i>
                                 <div class="action_title">Edit</div>

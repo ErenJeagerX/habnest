@@ -8,7 +8,7 @@ import fetchProperties from "./Modules/fetchProperties.js";
 window.addEventListener('DOMContentLoaded', function(){
     scrollFunctions();
     fetchProperties();
-    // map.mapInput();
+    map.mapInput();
     addNewPpty();
     //select
     const modals = document.querySelectorAll('.modal');

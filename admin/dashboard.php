@@ -1,8 +1,17 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['name'])){
+if (!isset($_SESSION['name']) || $_SESSION['role'] !== 'admin') {
     header('Location: ../login.php');
+}
+else {
+    require_once '../includes/db.php';
+    $sql = 'SELECT COUNT(*) AS admin_count FROM users WHERE role = "admin"';
+    $sql2 = 'SELECT COUNT(*) AS landlord_count FROM users WHERE role = "landlord"';
+    $sql3 = 'SELECT COUNT(*) AS property_count FROM properties';
+    $admin_count = $conn->query($sql)->fetch_assoc()['admin_count'];
+    $landlord_count = $conn->query($sql2)->fetch_assoc()['landlord_count'];
+    $property_count = $conn->query($sql3)->fetch_assoc()['property_count']; 
 }
 ?>
 <!DOCTYPE html>
@@ -56,17 +65,17 @@ if (!isset($_SESSION['name'])){
                     <div class="dashboard_statistics">
                         <div class="dashboard_card stats_card property_stats">
                             <i class="fas fa-building stats-icon"></i>
-                            <h2 class="stats_number">1,200</h2>
+                            <h2 class="stats_number"><?php echo $property_count?></h2>
                             <p class="stats_title">Properties</p>
                         </div>
                         <div class="dashboard_card stats_card landlords_stats">
                             <i class="fas fa-user-group stats-icon"></i>
-                            <h2 class="stats_number">1,200</h2>
+                            <h2 class="stats_number"><?php echo $landlord_count?></h2>
                             <p class="stats_title">Landlords</p>
                         </div>
                         <div class="dashboard_card stats_card admins_stats">
                             <i class="fas fa-user-shield stats-icon"></i>
-                            <h2 class="stats_number">3</h2>
+                            <h2 class="stats_number"><?php  echo $admin_count ?></h2>
                             <p class="stats_title">Admins</p>
                         </div>
                     </div>
@@ -81,24 +90,26 @@ if (!isset($_SESSION['name'])){
                             <p>Date Added</p>
                         </div>
                         <div class="tbody">
-                            <div class="row row_body">
-                                <p class="property-name">Spacious Villa</p>
-                                <p class="property-location">Addis Ababa</p>
-                                <p class="property-landlord">Abebe</p>
-                                <p class="property-date">2025 - 08 - 06</p>
-                            </div>
-                            <div class="row row_body">
-                                <p class="property-name">Spacious Villa</p>
-                                <p class="property-location">Addis Ababa</p>
-                                <p class="property-landlord">Abebe</p>
-                                <p class="property-date">2025 - 08 - 06</p>
-                            </div>
-                            <div class="row row_body">
-                                <p class="property-name">Spacious Villa</p>
-                                <p class="property-location">Addis Ababa</p>
-                                <p class="property-landlord">Abebe</p>
-                                <p class="property-date">2025 - 08 - 06</p>
-                            </div>
+                            <?php
+                            $sql_recent = 'SELECT * FROM properties ORDER BY id DESC LIMIT 5';
+                            $result_recent = $conn->query($sql_recent);
+                            if ($result_recent->num_rows > 0) {
+                                while ($row = $result_recent->fetch_assoc()) {
+                                    $sql_landlord = "SELECT first_name FROM users WHERE id = " . $row['landlord_id'];
+                                    // Fetch landlord name
+                                    $name_result =  $conn->query($sql_landlord);
+                                    $landlord_name = $name_result->fetch_assoc()['first_name'];
+                                    echo '<div class="row row_body">';
+                                    echo '<p class="property-name">' . htmlspecialchars(ucfirst($row['title'])) . '</p>';
+                                    echo '<p class="property-location">Debre Markos</p>';
+                                    echo '<p class="property-landlord">' . htmlspecialchars($landlord_name) . '</p>';
+                                    echo '<p class="property-date">' . htmlspecialchars($row['created_at']) . '</p>';
+                                    echo '</div>';
+                                }
+                            } else {
+                                echo '<div class="row row_body"><p>No recent listings found.</p></div>';
+                            }
+                            ?>
                         </div>
                     </div>
                     <!-- recent listings end -->
@@ -150,95 +161,8 @@ if (!isset($_SESSION['name'])){
                                     <p>Actions</p>
                                 </div>
                             </div>
-                            <div class="tbody">
-                                <div class="row">
-                                    <div class="ppty-img">
-                                        <img src="../assets/imgs/Property 1.jpg" alt="property 1" class="property_image">
-                                    </div>
-                                    <p class="property_name">Modern Apartment</p>
-                                    <p class="property_landlord">Abebe kebede</p>
-                                    <p class="property_status" data-status="available">Available</p>
-                                    <div class="actions">
-                                        <div class="action view-ppty">
-                                            <i class="fas fa-eye view-icon"></i>
-                                            <div class="action_title">View</div>
-                                        </div>
-                                        <div class="action edit-ppty">
-                                            <i class="fas fa-pencil edit-icon"></i>
-                                            <div class="action_title">Edit</div>
-                                        </div>
-                                        <div class="action delete-ppty open-modal" data-modal="modal-delete-ppty">
-                                            <i class="fas fa-trash delete-icon"></i>
-                                            <div class="action_title">Delete</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="ppty-img">
-                                        <img src="../assets/imgs/Property 1.jpg" alt="property 1" class="property_image">
-                                    </div>
-                                    <p class="property_name">Modern Apartment</p>
-                                    <p class="property_landlord">Abebe kebede</p>
-                                    <p class="property_status" data-status="available">Available</p>
-                                    <div class="actions">
-                                        <div class="action view-ppty">
-                                            <i class="fas fa-eye view-icon"></i>
-                                            <div class="action_title">View</div>
-                                        </div>
-                                        <div class="action edit-ppty">
-                                            <i class="fas fa-pencil edit-icon"></i>
-                                            <div class="action_title">Edit</div>
-                                        </div>
-                                        <div class="action delete-ppty open-modal" data-modal="modal-delete-ppty">
-                                            <i class="fas fa-trash delete-icon"></i>
-                                            <div class="action_title">Delete</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="ppty-img">
-                                        <img src="../assets/imgs/Property 1.jpg" alt="property 1" class="property_image">
-                                    </div>
-                                    <p class="property_name">Modern Apartment</p>
-                                    <p class="property_landlord">Abebe kebede</p>
-                                    <p class="property_status" data-status="available">Available</p>
-                                    <div class="actions">
-                                        <div class="action view-ppty">
-                                            <i class="fas fa-eye view-icon"></i>
-                                            <div class="action_title">View</div>
-                                        </div>
-                                        <div class="action edit-ppty">
-                                            <i class="fas fa-pencil edit-icon"></i>
-                                            <div class="action_title">Edit</div>
-                                        </div>
-                                        <div class="action delete-ppty open-modal" data-modal="modal-delete-ppty">
-                                            <i class="fas fa-trash delete-icon"></i>
-                                            <div class="action_title">Delete</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="ppty-img">
-                                        <img src="../assets/imgs/Property 1.jpg" alt="property 1" class="property_image">
-                                    </div>
-                                    <p class="property_name">Modern Apartment</p>
-                                    <p class="property_landlord">Abebe kebede</p>
-                                    <p class="property_status" data-status="available">Available</p>
-                                    <div class="actions">
-                                        <div class="action view-ppty">
-                                            <i class="fas fa-eye view-icon"></i>
-                                            <div class="action_title">View</div>
-                                        </div>
-                                        <div class="action edit-ppty">
-                                            <i class="fas fa-pencil edit-icon"></i>
-                                            <div class="action_title">Edit</div>
-                                        </div>
-                                        <div class="action delete-ppty open-modal" data-modal="modal-delete-ppty">
-                                            <i class="fas fa-trash delete-icon"></i>
-                                            <div class="action_title">Delete</div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="tbody properties-list">
+
                             </div>
                             <div class="page-controls">
                                 <div class="control previous">
