@@ -35,6 +35,7 @@ if(isset($_POST['submit'])) {
                     // Password is correct
                     $_SESSION['name'] = $row['first_name'];
                     $_SESSION['id'] = $row['id'];
+                    $_SESSION['role'] = $row['role'];
                     
                     //cookies
                     if(isset($_POST['remember_me'])){

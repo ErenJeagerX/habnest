@@ -3,8 +3,29 @@ if(session_id() == ""){
    session_start();
 }
 
-if (!isset($_SESSION['name'])){
+if (!isset($_SESSION['name']) || $_SESSION['role'] !== 'landlord') {
     header('Location: ../login.php');
+}
+else {
+    require_once '../includes/db.php';
+    $landlord_id = $_SESSION['id'];
+    $sql = 'SELECT * FROM properties where landlord_id = ?';
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $landlord_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $properties = $result->fetch_all(MYSQLI_ASSOC);
+    $count = count($properties);
+    $rented = 0;
+    $available = 0;
+    foreach($properties as $property){
+        if($property['status'] === 'rented'){
+            $rented++;
+        }
+        elseif($property['status'] === 'available') {
+            $available++;
+        }
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -61,17 +82,17 @@ if (!isset($_SESSION['name'])){
                     <div class="dashboard_statistics">
                         <div class="dashboard_card stats_card property_total_stats">
                             <i class="fas fa-building stats-icon"></i>
-                            <h2 class="stats_number">20</h2>
+                            <h2 class="stats_number"><?php echo $count ?></h2>
                             <p class="stats_title">Properties</p>
                         </div>
                         <div class="dashboard_card stats_card property_rented_stats">
                             <i class="fas fa-building stats-icon"></i>
-                            <h2 class="stats_number">10</h2>
+                            <h2 class="stats_number"><?php echo $rented?></h2>
                             <p class="stats_title">Rented</p>
                         </div>
                         <div class="dashboard_card stats_card property_available_stats">
                             <i class="fas fa-building stats-icon"></i>
-                            <h2 class="stats_number">10</h2>
+                            <h2 class="stats_number"><?php echo $available?></h2>
                             <p class="stats_title">Available</p>
                         </div>
                     </div>
